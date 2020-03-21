@@ -9,6 +9,7 @@ import { SlidebannerComponent } from './slidebanner/slidebanner.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { ProductmanagerComponent } from './productmanager/productmanager.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,8 @@ import { AddproductComponent } from './addproduct/addproduct.component';
     SlidebannerComponent,
     ProductlistComponent,
     ProductmanagerComponent,
-    AddproductComponent
+    AddproductComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
