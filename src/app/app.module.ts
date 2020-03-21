@@ -9,7 +9,6 @@ import { SlidebannerComponent } from './slidebanner/slidebanner.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { ProductmanagerComponent } from './productmanager/productmanager.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
-
 @NgModule({
   declarations: [
     AppComponent,
