@@ -1,13 +1,13 @@
 
-$height:65;
+$height:50;
 $depth:6;
 $color:orangered;
-$text-color:darken($color,10%);
+$text-color:darken($color,20%);
 $lighten-on-hover:7%;
 $button-speed:.06;
 $timing-function: ease-out;
 .linkbar {
-  margin: 0px 0px 20px 0px;
+  margin: 0px 0px -20px 0px;
 //   background-color: lightslategray;
   padding: 20px;
 }
@@ -16,12 +16,13 @@ $timing-function: ease-out;
   cursor: pointer;
   margin-left: 25px;
   margin-bottom: 15px;
-  text-shadow: 0 -2px 0 darken($color, 20%), 0 1px 1px lighten($color, 20%);
+  // text-shadow: 0 -2px 0 darken($color, 20%), 0 1px 1px lighten($color, 20%);
   box-sizing: border-box;
-  font-size: 2em;
+  font-size: 25px;
   font-family: Helvetica, Arial, Sans-Serif;
   text-decoration: none;
   font-weight: bold;
+  text-align: center;
   color: $text-color;
   &:visited {
     color: $text-color;
@@ -30,7 +31,7 @@ $timing-function: ease-out;
   line-height: $height + px;
   padding: 0 (($height/2) + px);
   display: inline-block;
-  width: auto;
+  width: 200px;
   background: linear-gradient(
     to bottom,
     saturate(lighten($color, 15%), 35%) 0%,

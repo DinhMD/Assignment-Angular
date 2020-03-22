@@ -13,9 +13,28 @@
 .btn {
   border-radius: 15px;
 }
+.btnsearch {
+  border-radius: 0px 20px 20px 0px;
+  color: black;
+  background-color: rgba($color: orange, $alpha: 0.7);
+  border: none;
+  margin-left: -58px;
+  width: 50px;
+  height: 38px;
+  text-align: center;
+  img {
+    width: 30px;
+    margin-top: 3px;
+  }
+}
+.btnsearch:hover {
+  background-color: rgba($color: orange, $alpha: 1);
+}
+.btnsearch:active {
+  background-color: rgba($color: orangered, $alpha: 0.5);
+}
 .homename {
   width: 95px;
   height: auto;
   background-image: url(/Assignment-Angular/src/images/bg-logoname.png);
 }
-
