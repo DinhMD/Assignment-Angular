@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../services.service';
 import { Products } from '../products';
-
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 @Component({
   selector: 'app-productlist',
   templateUrl: './productlist.component.html',
@@ -16,6 +18,7 @@ export class ProductlistComponent implements OnInit {
   headphone:Products[];
   mouse:Products[];
   product : Products[];
+  pricesale : number;
   ngOnInit(): void {
     this.product = this.service.getProduct();
     this.display = this.product.filter(product => product.type =='DIS')
@@ -24,5 +27,6 @@ export class ProductlistComponent implements OnInit {
     this.mouse = this.product.filter(product => product.type =='MOU')
     this.keyboard = this.product.filter(product => product.type =='KEY')
   }
+ 
 
 }

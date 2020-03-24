@@ -14,9 +14,9 @@
                     alt="Ảnh sản phẩm" class="card-img-top">
                 <div class="card-body">
                     <input class="card-text" type="text" value="{{item.name}}" disabled>
-                    <label class="text-price">{{item.price}}</label>
-                    <label class="sale">-5%</label>
-                    <label class="text-sale">20,990,000đ</label>
+                    <label class="text-price">{{item.price | currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
+                    <label class="sale">-{{item.sale}}%</label>
+                    <label class="text-sale">{{item.price - item.price*(item.sale/100) | currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
                 </div>
             </div>
         </div>
@@ -36,9 +36,9 @@
                     alt="Ảnh sản phẩm" class="card-img-top">
                 <div class="card-body">
                     <input class="card-text" type="text" value="{{item.name}}" disabled>
-                    <label class="text-price">{{item.price}}</label>
-                    <label class="sale">-5%</label>
-                    <label class="text-sale">20,990,000đ</label>
+                    <label class="text-price">{{item.price | currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
+                    <label class="sale">-{{item.sale}}%</label>
+                    <label class="text-sale">{{item.price - item.price*(item.sale/100) | currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
                 </div>
             </div>
         </div>
@@ -60,9 +60,9 @@
                         alt="Ảnh sản phẩm" class="card-img-top">
                     <div class="card-body">
                         <input class="card-text" type="text" value="{{item.name}}" disabled>
-                        <label class="text-price">{{item.price}}</label>
-                        <label class="sale">-5%</label>
-                        <label class="text-sale">20,990,000đ</label>
+                        <label class="text-price">{{item.price | currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
+                        <label class="sale">-{{item.sale}}%</label>
+                        <label class="text-sale">{{item.price - item.price*(item.sale/100) | currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
                     </div>
                 </div>
             </div>
@@ -85,9 +85,9 @@
                         alt="Ảnh sản phẩm" class="card-img-top">
                     <div class="card-body">
                         <input class="card-text" type="text" value="{{item.name}}" disabled>
-                        <label class="text-price">{{item.price}}</label>
-                        <label class="sale">-5%</label>
-                        <label class="text-sale">20,990,000đ</label>
+                        <label class="text-price">{{item.price | currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
+                        <label class="sale">-{{item.sale}}%</label>
+                        <label class="text-sale">{{item.price - item.price*(item.sale/100) | currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
                     </div>
                 </div>
             </div>
@@ -110,9 +110,9 @@
                         alt="Ảnh sản phẩm" class="card-img-top">
                     <div class="card-body">
                         <input class="card-text" type="text" value="{{item.name}}" disabled>
-                        <label class="text-price">{{item.price}}</label>
-                        <label class="sale">-5%</label>
-                        <label class="text-sale">20,990,000đ</label>
+                        <label class="text-price">{{item.price | currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
+                        <label class="sale">-{{item.sale}}%</label>
+                        <label class="text-sale">{{item.price - item.price*(item.sale/100) | currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
                     </div>
                 </div>
             </div>
