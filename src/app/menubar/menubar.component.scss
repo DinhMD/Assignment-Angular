@@ -17,7 +17,7 @@
   border-radius: 0px 20px 20px 0px;
   color: black;
   background-color: rgba($color: orange, $alpha: 0.7);
-  border: none;
+  border: solid 2px white;
   margin-left: -58px;
   width: 50px;
   height: 38px;
@@ -29,12 +29,24 @@
 }
 .btnsearch:hover {
   background-color: rgba($color: orange, $alpha: 1);
+  border: solid 1px white;
 }
 .btnsearch:active {
   background-color: rgba($color: orangered, $alpha: 0.5);
+  border: solid 2px white;
 }
 .homename {
   width: 95px;
   height: auto;
-  background-image: url(/Assignment-Angular/src/images/bg-logoname.png);
+  margin-right: 40px;
+}
+.btn-login {
+  background-color: steelblue;
+  font-weight: bold;
+}
+.btn-login:hover {
+  background-color: royalblue;
+}
+.btnbar:hover{
+  background-color: palegoldenrod;
 }

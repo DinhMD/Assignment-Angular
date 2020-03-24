@@ -2,8 +2,19 @@
     height: auto;
     width: 65%;
     margin: 0 auto;
-    background-color:white;
+    background-color:snow;
+}
+
+$color1: #0DA8FF;
+$color2: #16E80C;
+$color3: #FFC300;
+$color4: #E8250C;
+$color5: #6C12FF;
+.divbody {
+    background: linear-gradient(
+        to bottom, $color1, $color2, $color3, $color4, $color5
+    );
 }
 body {
-    background-color: lightgray;
+    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
 }

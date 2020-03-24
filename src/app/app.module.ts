@@ -10,6 +10,10 @@ import { ProductlistComponent } from './productlist/productlist.component';
 import { ProductmanagerComponent } from './productmanager/productmanager.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
+import { SignComponent } from './sign/sign.component';
+import { MainComponent } from './main/main.component';
+import { ErropageComponent } from './erropage/erropage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +23,11 @@ import { FooterComponent } from './footer/footer.component';
     ProductlistComponent,
     ProductmanagerComponent,
     AddproductComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    SignComponent,
+    MainComponent,
+    ErropageComponent
   ],
   imports: [
     BrowserModule,

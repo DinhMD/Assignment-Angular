@@ -1,60 +1,98 @@
 .card {
   padding: 10px;
   border: none;
-  background-color: rgba($color: #000000, $alpha: 0);
+  background-color: rgba($color: white, $alpha: 0);
 }
 .card-form {
-  // background-color: lightgrey;
-  // background-color: rgba($color: lightslategrey, $alpha: 0.3);
   border-radius: 10px;
-  border: solid 1px lightgray;
-  width: 100%;
-  height: 100%;
+  border: solid 2px orange;
+  box-shadow: 0px 0px 8px lightslategrey;
+  width: auto;
+  height: auto;
   img {
     border-radius: 10px 10px 0px 0px;
     height: 60%;
     width: 99%;
     margin: 2px;
   }
-  min-height: 410px;
-  max-height: 500px;
   input {
     border: none;
     background-color: rgba($color: #fff, $alpha: 0);
     font-weight: bold;
     text-overflow: ellipsis;
     width: 100%;
+    padding-bottom: 20px;
+  }
+  .card-body{
+    background-color: rgba($color: lightgrey, $alpha: 0.2);
   }
 }
 .card-form:hover {
-  box-shadow: 0px 0px 15px lightslategrey;
+  box-shadow: 0px 0px 0px lightslategrey;
+  border: solid 2px orangered;
 }
 .text-sale {
   font-weight: bold;
   color: red;
   display: block;
-  font-size: 20px;
+  font-size: 1.1rem;
 }
 .text-price {
   text-decoration: line-through;
   font-weight: bold;
   display: block;
-  font-size: 20px;
+  font-size: 1rem;
+  color: gray;
 }
 .sale {
-  font-size: 50px;
+  font-size: 4rem;
   float: right;
   margin-top: -50px;
   color: orangered;
 }
 .contentfooter {
-    margin-top: 50px;
-    margin-left: 0px;
-    height: 60px;
-    width: 100%;
-    background-color: lightslategray;
-    text-align: center;
-    p{
-        padding-top: 20px;
+  margin-top: 50px;
+  margin-left: 0px;
+  height: 60px;
+  width: 100%;
+  background-color: lightslategray;
+  text-align: center;
+  p {
+    padding-top: 20px;
+  }
+}
+.title-content {
+  margin: 0 auto;
+  height: 60px;
+  width: 100%;
+  padding: 0px 20px 0px 20px;
+  background-color: orange;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px gray;
+  p {
+    float: left;
+    padding-top: 20px;
+    text-align: left;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    color: white;
+  }
+  img {
+    float: left;
+  }
+  
+  a {
+    color: orangered;
+    margin-top: 15px;
+    margin-right: 15px;
+    font-weight: bold;
+    font-size: 20px;
+    float: right;
+    span {
+      font-weight: normal;
+      font-size: 20px;
     }
+  }
 }
