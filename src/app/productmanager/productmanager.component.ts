@@ -11,5 +11,4 @@ export class ProductmanagerComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
