@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Products } from '../products'
+import { ServicesService } from '../services.service';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 
 @Component({
   selector: 'app-productmanager',
@@ -6,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./productmanager.component.scss']
 })
 export class ProductmanagerComponent implements OnInit {
-
-  constructor() { }
+  litsItem : Products[];
+  constructor(private service:ServicesService) { }
 
   ngOnInit(): void {
+    this.litsItem = this.service.getProduct();
   }
 }
