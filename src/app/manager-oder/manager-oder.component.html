@@ -1,0 +1,31 @@
+<h1>Quản lý đơn hàng</h1>
+<div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Khách hàng</th>
+                <th>Sản phẩm</th>
+                <th>Tổng tiền</th>
+                <th>Ngày</th>
+                <th>Chi tiết</th>
+                <th>Xóa</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+            <tr *ngFor="let item of orderlist">
+                <td class="firstTD">{{item.orid}}</td>
+                <td>{{item.Customer}}</td>
+                <td><span *ngFor="let sp of item.item">-{{sp.name}}<br></span></td>
+                <td>{{item.price}}</td>
+                <td>{{item.date  | date:'mediumDate' }}</td>
+                <td><a>Chi tiết</a></td>
+                <td><a>Xóa</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

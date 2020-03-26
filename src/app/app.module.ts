@@ -14,6 +14,10 @@ import { LoginComponent } from './login/login.component';
 import { SignComponent } from './sign/sign.component';
 import { MainComponent } from './main/main.component';
 import { ErropageComponent } from './erropage/erropage.component';
+import { ManagerProductComponent } from './manager-product/manager-product.component';
+import { ManagerEmployComponent } from './manager-employ/manager-employ.component';
+import { ManagerCustomerComponent } from './manager-customer/manager-customer.component';
+import { ManagerOderComponent } from './manager-oder/manager-oder.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +31,11 @@ import { ErropageComponent } from './erropage/erropage.component';
     LoginComponent,
     SignComponent,
     MainComponent,
-    ErropageComponent
+    ErropageComponent,
+    ManagerProductComponent,
+    ManagerEmployComponent,
+    ManagerCustomerComponent,
+    ManagerOderComponent
   ],
   imports: [
     BrowserModule,

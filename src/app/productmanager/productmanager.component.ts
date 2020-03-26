@@ -10,10 +10,7 @@ import localeFr from '@angular/common/locales/fr';
   styleUrls: ['./productmanager.component.scss']
 })
 export class ProductmanagerComponent implements OnInit {
-  litsItem : Products[];
-  constructor(private service:ServicesService) { }
-
+  constructor() { }
   ngOnInit(): void {
-    this.litsItem = this.service.getProduct();
   }
 }

@@ -1,0 +1,30 @@
+<h1>Quản lý sản phẩm</h1>
+<div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Chi tiết</th>
+                <th>Xóa</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price | currency:'VND':'symbol-narrow':'3.0':'fr'}}</td>
+                <td>{{item.count}}</td>
+                <td><a>Chi tiết</a></td>
+                <td><a>Xóa</a></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

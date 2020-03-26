@@ -11,38 +11,41 @@
         <ul class="list-unstyled components">
             <p class="text-center mr-3">QUẢN LÝ</p>
             <li>
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i
+                <a href="#homeSubmenu"  data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i
                         class="fas fa-th-large pr-3"></i>Sản phẩm</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                        <a href="/manager"><i class="fas fa-tv pr-2"></i>Màn hình</a>
+                        <a class="btnAdmin" routerLink="/manager/product/all" ><i class="fad fa-th-large pr-2"></i>Tất cả</a>
                     </li>
                     <li>
-                        <a href="/manager"><i class="fas fa-chair pr-2"></i>Ghế</a>
+                        <a class="btnAdmin" routerLink="/manager/product/DIS" ><i class="fas fa-tv pr-2"></i>Màn hình</a>
                     </li>
                     <li>
-                        <a href="/manager"><i class="far fa-keyboard pr-2"></i>Bàn phím</a>
+                        <a class="btnAdmin" routerLink="/manager/product/CHA" ><i class="fas fa-chair pr-2"></i>Ghế</a>
                     </li>
                     <li>
-                        <a href="/manager"><i class="fas fa-headset pr-2"></i>Tai nghe</a>
+                        <a class="btnAdmin" routerLink="/manager/product/KEY" ><i class="far fa-keyboard pr-2"></i>Bàn phím</a>
                     </li>
                     <li>
-                        <a href="/manager"><i class="fas fa-mouse pr-2"></i>Chuột</a>
+                        <a class="btnAdmin" routerLink="/manager/product/HEA" ><i class="fas fa-headset pr-2"></i>Tai nghe</a>
+                    </li>
+                    <li>
+                        <a class="btnAdmin" routerLink="/manager/product/MOU" ><i class="fas fa-mouse pr-2"></i>Chuột</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="/manager"><i class="fas fa-shopping-cart pr-2"></i>Đơn hàng</a>
+                <a href="/manager/order"><i class="fas fa-shopping-cart pr-2"></i>Đơn hàng</a>
             </li>
             <li>
                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i
                         class="far fa-user pr-2"></i>Tài khoản</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li>
-                        <a href="/manager"><i class="fad fa-users pr-2"></i>Tài khoản khách hàng</a>
+                        <a href="/manager/customer"><i class="fad fa-users pr-2"></i>Tài khoản khách hàng</a>
                     </li>
                     <li>
-                        <a href="/manager"><i class="fad fa-user-shield pr-2"></i>Tài khoản nhân viên</a>
+                        <a href="/manager/employ"><i class="fad fa-user-shield pr-2"></i>Tài khoản nhân viên</a>
                     </li>
                 </ul>
             </li>
@@ -58,37 +61,7 @@
     <div id="content">
         <div class="ADContent">
             <section>
-                <!--for demo wrap-->
-                <h1>Quản lý</h1>
-                <div class="tbl-header">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Giá</th>
-                                <th>Số lượng</th>
-                                <th>Chi tiết</th>
-                                <th>Xóa</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-                <div class="tbl-content">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                        <tbody>
-                            <tr *ngFor="let item of litsItem">
-                                <td>{{item.id}}</td>
-                                <td>{{item.name}}</td>
-                                <td>{{item.price | currency:'VND':'symbol-narrow':'3.0':'fr'}}</td>
-                                <td>{{item.count}}</td>
-                                <td><a>Chi tiết</a></td>
-                                <td><a>Xóa</a></td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
+                <router-outlet></router-outlet>
             </section>
 
 

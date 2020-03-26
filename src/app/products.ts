@@ -7,3 +7,10 @@ export class Products {
     sale: number;
     anh: String;
 }
+export class Order {
+    orid : number;
+    Customer: String;
+    item : Products[];
+    price : number;
+    date : Date;
+}
