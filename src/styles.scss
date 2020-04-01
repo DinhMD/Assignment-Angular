@@ -1,37 +1,16 @@
 .contentbody {
     height: auto;
-    width: 65%;
+    width: 100%;
     margin: 0 auto;
-    background-color:snow;
-}
-
-$color1: #0DA8FF;
-$color2: #16E80C;
-$color3: #FFC300;
-$color4: #E8250C;
-$color5: #6C12FF;
-// .divbody {
-//     background: linear-gradient(
-//         to bottom, $color1, $color2, $color3, $color4, $color5
-//     );
-// }
-.divbody {
-    background: linear-gradient(-50deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradient 10s ease infinite;
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-body {
-    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-}
+    background-color: snow;
+  }
+  
+  body {
+    background-image: url("https://www.itl.cat/pngfile/big/90-904291_awesome-4k-rog-wallpapers.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  

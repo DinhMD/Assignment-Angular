@@ -1,47 +1,60 @@
-<nav class="sticky-top navbar navbar-expand-lg navbar-light bg-secondary">
-    <a class="homename navbar-brand" href="#">
-        <img src="assets/images/logo.png" alt="Null image" width="auto" height="25">
-        <img src="assets/images/logoname.png" alt="Null image" width="auto" height="30">
+<nav class="sticky-top navbar navbar-expand-lg navbar-light">
+    <a class="homename navbar-brand" routerLink="/home">
+        <img src="https://i.imgur.com/ekGn84w.png" alt="Null image" width="auto" height="25" />
+        <img src="https://i.imgur.com/fkW5J7J.png" alt="Null image" width="auto" height="30" />
     </a>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-outline-light btn-warning dropdown-toggle text-dark" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false"><span><img src="https://img.icons8.com/ios-filled/50/000000/list.png" width="20"/> Danh mục</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#"><i class="fas fa-tv pr-2"></i>Màn hình</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-chair pr-2"></i>Ghế Gaming</a>
-                        <a class="dropdown-item" href="#"><i class="far fa-keyboard pr-2"></i>Bàn phím</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-mouse pr-2"></i>Chuột</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-headset pr-2"></i>Tai nghe</a>
-                    </div>
-                </div>
+                <ul class="menu">
+                    <a routerLink="" class="btnDrop" (mouseenter)="showMenu()">Danh mục</a>
+                    <li (mouseleave)="hideMenu()">
+                        <ul class="dropForBtn">
+                            <li>
+                                <a routerLink=""><i class="fas fa-tv pr-2"></i>Màn hình</a>
+                            </li>
+                            <li>
+                                <a routerLink=""><i class="fas fa-chair pr-2"></i>Ghế Gaming</a>
+                            </li>
+                            <li>
+                                <a routerLink=""><i class="far fa-keyboard pr-2"></i>Bàn phím</a>
+                            </li>
+                            <li>
+                                <a routerLink=""><i class="fas fa-headphones-alt pr-2"></i>Tai nghe</a>
+                            </li>
+                            <li>
+                                <a routerLink=""><i class="fas fa-mouse-pointer pr-2"></i>Chuột</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item">
-                <a class="btnbar btn btn-outline-light my-2 my-sm-0" href="#">Giới thiệu</a>
+                <a class="btnbar btn btn-outline-light my-2 my-sm-0" routerLink="/home">Giới thiệu</a>
             </li>
             <li class="nav-item">
-                <a class="btnbar btn btn-outline-light my-2 my-sm-0" href="#">Khuyến mãi</a>
+                <a class="btnbar btn btn-outline-light my-2 my-sm-0" routerLink="/home">Khuyến mãi</a>
             </li>
             <form class="formsearch form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2 searchinput" type="search"
-                    placeholder="Màn hình, tai nghe, bàn phím...">
-                <i class="btnsearch my-2 my-sm-0" style=""><img src="https://img.icons8.com/wired/50/000000/search.png"/></i>
+                    placeholder="Màn hình, tai nghe, bàn phím..." />
+                <i class="btnsearch my-2 my-sm-0"><img
+                        src="https://img.icons8.com/wired/50/000000/search.png" /></i>
             </form>
         </ul>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-                <a class="btnbar btn btn-outline-light my-2 my-sm-0" href="#">Giỏ hàng<span style=" color:orange; padding-left: 5px; font-size: 18px;">100</span></a>
+                <a class="btnbar btn btn-outline-light my-2 my-sm-0" routerLink="/home">Giỏ hàng<span
+                        style=" color:orange; padding-left: 5px; font-size: 18px;">100</span></a>
             </li>
         </ul>
-        
+
         <div class="nav-item">
-            <a class="btn-login btn btn-outline-light my-2 my-sm-0" routerLink="/login" style="color: yellow;margin-right: 5px; ">Đăng nhập</a>
+            <a class="btn-login btn btn-outline-light my-2 my-sm-0" routerLink="/login"
+                style="color: yellow;margin-right: 5px; ">Đăng nhập</a>
         </div>
         <div class="nav-item">
-            <a class="btn-sign btn btn-outline-light my-2 my-sm-0" href="signup" >Đăng ký</a>
+            <a class="btn-sign btn btn-outline-light my-2 my-sm-0" href="signup">Đăng ký</a>
         </div>
     </div>
 </nav>

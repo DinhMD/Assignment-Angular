@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <img src="{{produc.image}}" alt="Ảnh sản phẩm" />
+        </div>
+        <div class="col-9 mt-4">
+            <label class="label-name">{{produc.name}}</label>
+            <label class="label-price">Giá:
+                <span>{{produc.price | currency:'VND':'symbol-narrow':'3.0':'fr'}}</span></label>
+            <label class="label-pricesale">Giảm còn:
+                <span>{{produc.price - produc.price*(produc.sale/100) |
+            currency:'VND':'symbol-narrow':'3.0':'fr'}}</span></label>
+            <label class="label-count">
+                <input type="number" class="ml-2" id="input-count" max="{{produc.count}}" min="1" value="1" /><br />
+            </label>
+            <div class="pt-4">
+                <button class="btn btn-danger">Mua</button>
+                <button class="btn btn-primary ml-5">Thêm vào giỏ</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <label>Chi tiết: </label>
+        <textarea class="desc" cols="5" disabled>{{produc.desc}}</textarea>
+    </div>
+</div>
+<hr />
+<div class="container contai-content">
+    <p>Sản phẩm tương tự</p>
+</div>

@@ -18,6 +18,8 @@ import { ManagerProductComponent } from './manager-product/manager-product.compo
 import { ManagerEmployComponent } from './manager-employ/manager-employ.component';
 import { ManagerCustomerComponent } from './manager-customer/manager-customer.component';
 import { ManagerOderComponent } from './manager-oder/manager-oder.component';
+import { ProductdetailsComponent } from './productdetails/productdetails.component';
+import { ContentsComponent } from './contents/contents.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,9 @@ import { ManagerOderComponent } from './manager-oder/manager-oder.component';
     ManagerProductComponent,
     ManagerEmployComponent,
     ManagerCustomerComponent,
-    ManagerOderComponent
+    ManagerOderComponent,
+    ProductdetailsComponent,
+    ContentsComponent
   ],
   imports: [
     BrowserModule,

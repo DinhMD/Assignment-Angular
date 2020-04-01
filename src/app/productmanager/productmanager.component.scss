@@ -2,7 +2,7 @@
     DEMO STYLE
 */
 
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+// @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 p {
   font-family: "Poppins", sans-serif;
@@ -13,6 +13,8 @@ p {
 }
 
 a,
+.btntoggle,
+.btntoggle:hover,
 a:hover,
 a:focus {
   color: inherit;
@@ -50,7 +52,7 @@ a:focus {
   display: flex;
   width: 100%;
   align-items: stretch;
-  background-image: url("src/assets/images/managerBg.png");
+  background-image: url("https://i.imgur.com/0YQhdPS.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -81,14 +83,20 @@ a:focus {
   color: #fff;
   padding: 10px;
 }
-
 #sidebar ul li a {
   padding: 10px;
   font-size: 1.1em;
   display: block;
 }
-
-#sidebar ul li a:hover {
+.btntoggle:active {
+  outline: none;
+  border: none;
+}
+.btntoggle:focus {
+  outline: 0;
+}
+#sidebar ul li a:hover,
+.btntoggle:hover {
   color: #7386d5;
   background: rgba($color: #000000, $alpha: 0.2);
 }
@@ -171,81 +179,81 @@ a.article:hover {
 ///////
 
 //colors
-$red: #E1332D;
+$red: #e1332d;
 $white: #fff;
 
 * {
-    box-sizing: inherit;
-    transition-property: all;
-    transition-duration: .6s;
-    transition-timing-function: ease;
-  }
+  box-sizing: inherit;
+  transition-property: all;
+  transition-duration: 0.6s;
+  transition-timing-function: ease;
+}
 
-  .btn {
-    color: #fff;
-    cursor: pointer;
-    font-size:16px;
-    font-weight: 400;
-    line-height: 33px;
-    margin: 0;
-    max-width: 160px; 
-    position: relative;
-    text-decoration: none;
-    text-transform: uppercase;
-    width: 100%; 
-    @media(min-width: 600px) {
-        
-      margin: 0 1em 2em;
-    &:hover { text-decoration: none; }
-    
+.btn {
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 33px;
+  margin: 0;
+  max-width: 160px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%;
+  @media (min-width: 600px) {
+    margin: 0 1em 2em;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
-btn-1{
-    background: rgba($white, 0);
-    border-bottom: 1px solid;
-    color: $white;
-    line-height: 1.4;
-    padding: .25em;
-    text-decoration: none;
-    
-    &:hover {
-      background: rgba($white, 1);
-      color: $red;
-    }
+btn-1 {
+  background: rgba($white, 0);
+  border-bottom: 1px solid;
+  color: $white;
+  line-height: 1.4;
+  padding: 0.25em;
+  text-decoration: none;
+
+  &:hover {
+    background: rgba($white, 1);
+    color: $red;
   }
-  .btn-1 {
-    background: darken($red, 1.5%);
-    font-weight: 100;
-    
-    svg {
-      height: 45px;
-      left: 0;
-      position: absolute;
-      top: 0; 
-      width: 100%; 
-    }
-    
-    rect {
-      fill: none;
-      stroke: #fff;
-      stroke-width: 2;
-      stroke-dasharray: 422, 0;
-      transition: all 0.35s linear;
-    }
+}
+.btn-1 {
+  background: darken($red, 1.5%);
+  font-weight: 100;
+
+  svg {
+    height: 45px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
   }
-  
-  .btn-1:hover {
-    background: rgba($red, 0);
-    font-weight: 900;
-    letter-spacing: 1px;
-    
-    rect {
-      stroke-width: 5;
-      stroke-dasharray: 15, 310;
-      stroke-dashoffset: 48;
-      transition: all 1s cubic-bezier(0.19, 1, 0.22, 1.2);
-    }
+
+  rect {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-dasharray: 422, 0;
+    transition: all 0.35s linear;
   }
-  .btnAdmin {
-    cursor: pointer;
+}
+
+.btn-1:hover {
+  background: rgba($red, 0);
+  font-weight: 900;
+  letter-spacing: 1px;
+
+  rect {
+    stroke-width: 5;
+    stroke-dasharray: 15, 310;
+    stroke-dashoffset: 48;
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1.2);
   }
+}
+.btnAdmin {
+  cursor: pointer;
+}

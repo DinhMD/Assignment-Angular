@@ -1,15 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <title>Gear Shop - Gaming Gear Center</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="https://i.imgur.com/ekGn84w.png" />
   <link rel="stylesheet" href="assets/font-awesome-pro/css/all.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>
@@ -19,29 +21,99 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <script>
-    $(window).on("load resize ", function () {
-      var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
-      $('.tbl-header').css({ 'padding-right': scrollWidth });
-    }).resize();
+    $(window)
+      .on("load resize ", function () {
+        var scrollWidth =
+          $(".tbl-content").width() - $(".tbl-content table").width();
+        $(".tbl-header").css({ "padding-right": scrollWidth });
+      })
+      .resize();
     $(document).ready(function () {
-      $('.pass_show').append('<span class="ptxt">Show</span>');
+      $(".pass_show").append('<span class="ptxt">Show</span>');
     });
-
-
-    $(document).on('click', '.ptxt', function () {
-
+    $(document).on("click", ".ptxt", function () {
       $(this).text($(this).text() == "Show" ? "Hide" : "Show");
 
-      $(this).parent().parent().children(2).children('input').attr('type', function (index, attr) { return attr == 'password' ? 'text' : 'password'; });
+      $(this)
+        .parent()
+        .parent()
+        .children(2)
+        .children("input")
+        .attr("type", function (index, attr) {
+          return attr == "password" ? "text" : "password";
+        });
+    });
+    $(".multi-item-carousel").carousel({
+      interval: false
+    });
 
-    });  
+    $(".multi-item-carousel .item").each(function () {
+      var next = $(this).next();
+      if (!next.length) {
+        next = $(this).siblings(":first");
+      }
+      next
+        .children(":first-child")
+        .clone()
+        .appendTo($(this));
+
+      if (next.next().length > 0) {
+        next
+          .next()
+          .children(":first-child")
+          .clone()
+          .appendTo($(this));
+      } else {
+        $(this)
+          .siblings(":first")
+          .children(":first-child")
+          .clone()
+          .appendTo($(this));
+      }
+    });
+  </script>
+
+  <!--scripts loaded here-->
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+
+  <script>
+    $("#recipeCarousel").carousel({
+      interval: 10000
+    });
+
+    $(".carousel .carousel-item").each(function () {
+      var next = $(this).next();
+      if (!next.length) {
+        next = $(this).siblings(":first");
+      }
+      next
+        .children(":first-child")
+        .clone()
+        .appendTo($(this));
+
+      if (next.next().length > 0) {
+        next
+          .next()
+          .children(":first-child")
+          .clone()
+          .appendTo($(this));
+      } else {
+        $(this)
+          .siblings(":first")
+          .children(":first-child")
+          .clone()
+          .appendTo($(this));
+      }
+    });
   </script>
 </head>
 
 <body>
   <app-root></app-root>
 </body>
-
 </html>

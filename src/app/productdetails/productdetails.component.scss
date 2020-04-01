@@ -1,0 +1,52 @@
+.container {
+  margin-top: 20px;
+  label {
+    display: block;
+  }
+  .row {
+    img {
+      margin-top: 20px;
+      width: 100%;
+    }
+  }
+}
+.contai-content {
+  min-height: 600px;
+}
+.label-name {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.label-price {
+  display: block;
+  font-size: 1.1rem;
+  span {
+    font-size: 1.2rem;
+    color: black;
+    font-weight: bold;
+    text-decoration: line-through;
+  }
+}
+.label-pricesale {
+  display: block;
+  span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: red;
+  }
+}
+.desc {
+  width: 100%;
+  background-color: rgba($color: #fff, $alpha: 0);
+  border: none;
+}
+.label-count {
+  input {
+    font-size: 1.2rem;
+    font-weight: bold;
+    float: left;
+    width: 70px;
+    height: 38px;
+  }
+}

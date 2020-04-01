@@ -11,7 +11,7 @@
   }
 }
 .btn {
-  border-radius: 15px;
+  border-radius: 10px;
 }
 .btnsearch {
   border-radius: 0px 20px 20px 0px;
@@ -49,4 +49,66 @@
 }
 .btnbar:hover{
   background-color: palegoldenrod;
+}
+nav {
+  background-color: rgba(black, 0.3);
+  height: 4rem;
+}
+//////////////////////////////////////////////
+////////////////Dropdown Menu/////////////////
+///////////////////////////////////////////////
+.menu {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  width: 200px;
+}
+
+// .menu > li > a {
+  
+// }
+
+.menu{
+  ul {
+    background-color: rgb(255, 255, 255);
+    height: 0;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    transition: all .5s ease;
+    top: 35px;
+    width: 100%;
+    margin-top: 10px; 
+  }
+  li {
+    list-style: none;
+  }
+} 
+.btnDrop{
+  cursor: pointer;
+  color: black;
+  background-color: rgba(orange, 1);
+  color: #fff;
+  border-radius: 5px;
+  display: block;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+}
+// .menu 
+.btnDrop:hover { 
+  background-color: rgba( orangered , 0.5);
+  text-decoration: none;
+}
+
+// }
+.menu ul a {
+  color: #fff;
+  display: block;
+  padding: 5px 20px;
+  text-decoration: none;
+}
+.menu ul a:hover {
+  color: rgba( gray , 0.5);
+  background-color: rgba( black , 0.5)
 }

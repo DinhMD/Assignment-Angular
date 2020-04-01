@@ -5,12 +5,14 @@ export class Products {
     name: String;
     price: number;
     sale: number;
-    anh: String;
-}
-export class Order {
-    orid : number;
-    Customer: String;
-    item : Products[];
-    price : number;
-    date : Date;
-}
+    image: String;
+    desc: String;
+  }
+  export class Order {
+    id: number;
+    customer: String;
+    items: Products[];
+    price: number;
+    date: String;
+  }
+  

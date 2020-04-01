@@ -2,55 +2,62 @@
     <!-- Sidebar  -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <a class="">
-                <img src="assets/images/logo.png" height="50">
-                <img src="assets/images/logoname.png" height="40">
+            <a href="/manager">
+                <img src="https://i.imgur.com/ekGn84w.png" height="50" />
+                <img src="https://i.imgur.com/fkW5J7J.png" height="40" />
             </a>
         </div>
-
         <ul class="list-unstyled components">
             <p class="text-center mr-3">QUẢN LÝ</p>
             <li>
-                <a href="#homeSubmenu"  data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i
-                        class="fas fa-th-large pr-3"></i>Sản phẩm</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
+                <button class="btntoggle">
+                    <i class="fas fa-th-large"></i>
+                    Sản phẩm
+                </button>
+                <ul id="homeSubmenu">
                     <li>
-                        <a class="btnAdmin" routerLink="/manager/product/all" ><i class="fad fa-th-large pr-2"></i>Tất cả</a>
+                        <a class="btnAdmin" routerLink="/manager/product/all"><i class="fas fa-th pr-2"></i>Tất cả</a>
                     </li>
                     <li>
-                        <a class="btnAdmin" routerLink="/manager/product/DIS" ><i class="fas fa-tv pr-2"></i>Màn hình</a>
+                        <a class="btnAdmin" routerLink="/manager/product/DIS"><i class="fas fa-tv pr-2"></i>Màn hình</a>
                     </li>
                     <li>
-                        <a class="btnAdmin" routerLink="/manager/product/CHA" ><i class="fas fa-chair pr-2"></i>Ghế</a>
+                        <a class="btnAdmin" routerLink="/manager/product/CHA"><i class="fas fa-chair pr-2"></i>Ghế</a>
                     </li>
                     <li>
-                        <a class="btnAdmin" routerLink="/manager/product/KEY" ><i class="far fa-keyboard pr-2"></i>Bàn phím</a>
+                        <a class="btnAdmin" routerLink="/manager/product/KEY"><i class="far fa-keyboard pr-2"></i>Bàn
+                            phím</a>
                     </li>
                     <li>
-                        <a class="btnAdmin" routerLink="/manager/product/HEA" ><i class="fas fa-headset pr-2"></i>Tai nghe</a>
+                        <a class="btnAdmin" routerLink="/manager/product/HEA"><i
+                                class="fas fa-headphones-alt pr-2"></i>Tai nghe</a>
                     </li>
                     <li>
-                        <a class="btnAdmin" routerLink="/manager/product/MOU" ><i class="fas fa-mouse pr-2"></i>Chuột</a>
+                        <a class="btnAdmin" routerLink="/manager/product/MOU"><i
+                                class="fas fa-mouse-pointer pr-2"></i>Chuột</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="/manager/order"><i class="fas fa-shopping-cart pr-2"></i>Đơn hàng</a>
+                <a routerLink="/manager/order"><i class="fas fa-shopping-cart pr-2"></i>Đơn hàng</a>
             </li>
             <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i
-                        class="far fa-user pr-2"></i>Tài khoản</a>
+                <button class="btntoggle navbar-toggler" type="button" data-toggle="collapse" data-target="#pageSubmenu"
+                    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-user-friends"></i>
+                    Tài khoản
+                </button>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li>
-                        <a href="/manager/customer"><i class="fad fa-users pr-2"></i>Tài khoản khách hàng</a>
+                        <a routerLink="/manager/customer"><i class="fas fa-users pr-2"></i>Tài khoản khách hàng</a>
                     </li>
                     <li>
-                        <a href="/manager/employ"><i class="fad fa-user-shield pr-2"></i>Tài khoản nhân viên</a>
+                        <a routerLink="/manager/employ"><i class="far fa-user pr-2"></i>Tài khoản nhân viên</a>
                     </li>
                 </ul>
             </li>
         </ul>
-        <a href="home" class="btn btn-1">
+        <a routerLink="/home" class="btn btn-1">
             <svg>
                 <rect x="0" y="0" fill="none" width="100%" height="100%" />
             </svg>
@@ -63,8 +70,6 @@
             <section>
                 <router-outlet></router-outlet>
             </section>
-
-
         </div>
     </div>
 </div>

@@ -9,8 +9,10 @@ import localeFr from '@angular/common/locales/fr';
   templateUrl: './productmanager.component.html',
   styleUrls: ['./productmanager.component.scss']
 })
+
 export class ProductmanagerComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {
   }
+  
 }

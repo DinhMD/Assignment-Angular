@@ -18,11 +18,13 @@
     <table cellpadding="0" cellspacing="0" border="0">
         <tbody>
             <tr *ngFor="let item of orderlist">
-                <td class="firstTD">{{item.orid}}</td>
-                <td>{{item.Customer}}</td>
-                <td><span *ngFor="let sp of item.item">-{{sp.name}}<br></span></td>
+                <td class="firstTD">{{item.id}}</td>
+                <td>{{item.customer}}</td>
+                <td>
+                    <span *ngFor="let sp of item.items">-{{sp.name}}<br /></span>
+                </td>
                 <td>{{item.price}}</td>
-                <td>{{item.date  | date:'mediumDate' }}</td>
+                <td>{{item.date | date:'mediumDate' }}</td>
                 <td><a>Chi tiết</a></td>
                 <td><a>Xóa</a></td>
             </tr>

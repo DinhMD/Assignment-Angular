@@ -11,5 +11,14 @@ export class MenubarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+  showMenu() {
+    (document.querySelector(".dropForBtn") as HTMLElement).style.opacity = "1";
+    (document.querySelector(".dropForBtn") as HTMLElement).style.visibility =
+      "visible";
+  }
+  hideMenu() {
+    (document.querySelector(".dropForBtn") as HTMLElement).style.opacity = "0";
+    (document.querySelector(".dropForBtn") as HTMLElement).style.visibility =
+      "hidden";
+  }
 }

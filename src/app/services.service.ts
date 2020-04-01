@@ -1,17 +1,35 @@
-import { Injectable } from '@angular/core';
-import { datafake } from './datafake';
-import { orderdata } from './datafake';
+import { Injectable, OnInit } from "@angular/core";
+import { Products } from "./products";
+import { Order } from "./products";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ServicesService {
-  fullitems = datafake;
-  fullOrder = orderdata;
-  constructor() { }
-  getProduct(){
-    return this.fullitems;
+  api = "https://5e7eae447a92ed001655fc7c.mockapi.io";
+  fullitems: Products[];
+  fullOrder: Order[];
+  constructor(private http: HttpClient) {}
+  getProduct(): Observable<Products[]> {
+    return this.http.get<Products[]>(`${this.api}/products`);
   }
-  getOrder(){
+  getProductById(id): Observable<Products> {
+    return this.http.get<Products>(`${this.api}/products/${id}`);
+  }
+  getOrder(): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.api}/order`);
+  }
+  setFullItem(item) {
+    this.fullitems = item;
+  }
+  getItemId(id) {
+    return this.fullitems.find(product => product.id === id);
+  }
+  getFullItem() {
+    return this.fullOrder;
+  }
+  getFullOrder() {
     return this.fullOrder;
   }
 }

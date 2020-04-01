@@ -70,7 +70,6 @@ section {
   -webkit-box-shadow: inset 0 0 10px rgba(255, 141, 0, 1);
 }
 
-
 .ptxt {
   position: absolute;
   color: #f36c01;
@@ -80,4 +79,8 @@ section {
 
 .ptxt:hover {
   color: #fff;
+}
+.passform {
+  background-color: rgba(white, 0.2);
+  color: white;
 }
