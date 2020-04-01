@@ -208,19 +208,6 @@ $white: #fff;
     }
   }
 }
-btn-1 {
-  background: rgba($white, 0);
-  border-bottom: 1px solid;
-  color: $white;
-  line-height: 1.4;
-  padding: 0.25em;
-  text-decoration: none;
-
-  &:hover {
-    background: rgba($white, 1);
-    color: $red;
-  }
-}
 .btn-1 {
   background: darken($red, 1.5%);
   font-weight: 100;
@@ -256,4 +243,8 @@ btn-1 {
 }
 .btnAdmin {
   cursor: pointer;
+}
+.btntoggle {
+  background-color: rgba($color: #000000, $alpha: 0);
+  border: none;
 }

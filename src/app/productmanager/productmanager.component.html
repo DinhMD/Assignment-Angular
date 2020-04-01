@@ -10,7 +10,7 @@
         <ul class="list-unstyled components">
             <p class="text-center mr-3">QUẢN LÝ</p>
             <li>
-                <button class="btntoggle">
+                <button class="btntoggle" (click)="showToggle()">
                     <i class="fas fa-th-large"></i>
                     Sản phẩm
                 </button>
@@ -42,12 +42,11 @@
                 <a routerLink="/manager/order"><i class="fas fa-shopping-cart pr-2"></i>Đơn hàng</a>
             </li>
             <li>
-                <button class="btntoggle navbar-toggler" type="button" data-toggle="collapse" data-target="#pageSubmenu"
-                    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="btntoggle navbar-toggler">
                     <i class="fas fa-user-friends"></i>
                     Tài khoản
                 </button>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
+                <ul  id="pageSubmenu">
                     <li>
                         <a routerLink="/manager/customer"><i class="fas fa-users pr-2"></i>Tài khoản khách hàng</a>
                     </li>

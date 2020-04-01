@@ -1,4 +1,5 @@
-<h1>Quản lý sản phẩm</h1>
+<button class="btn float-right bg-success"><strong>+</strong>Thêm sản phẩm</button>
+<h1 style="display: inline;" class="ml-2">Quản lý sản phẩm</h1>
 <div class="tbl-header">
     <table cellpadding="0" cellspacing="0" border="0">
         <thead>
@@ -18,7 +19,7 @@
         <tbody>
             <tr *ngFor="let item of items">
                 <td>{{item.id}}</td>
-                <td>{{item.name}}</td>
+                <td><a class="nameLink" routerLink="">{{item.name}}</a></td>
                 <td>{{item.price | currency:'VND':'symbol-narrow':'3.0':'fr'}}</td>
                 <td>{{item.count}}</td>
                 <td><a>Chi tiết</a></td>

@@ -13,10 +13,16 @@ export class ProductdetailsComponent implements OnInit {
     private active: ActivatedRoute
   ) {}
   produc: Products;
+  productType : Products[];
   ngOnInit(): void {
+    window.scrollTo(0,0);
     this.active.params.subscribe(param => this.setProductId(param.id));
   }
   setProductId(id) {
-    this.produc = this.service.getItemId(id);
+    this.produc = this.service.getItemId(id); 
+    this.setProductType(this.produc.type);
+  }
+  setProductType(type){
+    this.productType = this.service.getItemType(type);
   }
 }

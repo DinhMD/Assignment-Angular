@@ -17,8 +17,10 @@ export class MenubarComponent implements OnInit {
       "visible";
   }
   hideMenu() {
-    (document.querySelector(".dropForBtn") as HTMLElement).style.opacity = "0";
-    (document.querySelector(".dropForBtn") as HTMLElement).style.visibility =
-      "hidden";
+    if ((document.querySelector(".dropForBtn") as HTMLElement).style.visibility == "visible") {
+      (document.querySelector(".dropForBtn") as HTMLElement).style.opacity = "0";
+      (document.querySelector(".dropForBtn") as HTMLElement).style.visibility =
+        "hidden";
+    }
   }
 }

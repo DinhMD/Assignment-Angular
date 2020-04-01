@@ -26,6 +26,9 @@ export class ServicesService {
   getItemId(id) {
     return this.fullitems.find(product => product.id === id);
   }
+  getItemType(type){
+    return this.fullitems.filter(product => product.type === type)
+  }
   getFullItem() {
     return this.fullOrder;
   }

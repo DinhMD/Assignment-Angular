@@ -3,6 +3,8 @@
 }
 .btnbar {
   margin-left: 10px;
+  padding: 10px 20px;
+  color: white;
 }
 .formsearch {
   margin-left: 50px;
@@ -39,16 +41,21 @@
   width: 95px;
   height: auto;
   margin-right: 40px;
-}
+  }
 .btn-login {
   background-color: orange;
   font-weight: bold;
+  padding: 10px 20px;
+}
+.btn-sign {
+  padding: 10px 20px;
 }
 .btn-login:hover {
   background-color: orangered;
 }
 .btnbar:hover{
   background-color: palegoldenrod;
+  color: black;
 }
 nav {
   background-color: rgba(black, 0.3);
@@ -70,7 +77,7 @@ nav {
 
 .menu{
   ul {
-    background-color: rgb(255, 255, 255);
+    background-color: black;
     height: 0;
     left: 0;
     opacity: 0;
@@ -87,28 +94,30 @@ nav {
 .btnDrop{
   cursor: pointer;
   color: black;
-  background-color: rgba(orange, 1);
+  background: darken(red, 1.5%);
+  font-weight: 100;
   color: #fff;
   border-radius: 5px;
   display: block;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
+  
 }
 // .menu 
 .btnDrop:hover { 
-  background-color: rgba( orangered , 0.5);
+  background: rgba(red, 0.5);
   text-decoration: none;
+  
 }
-
-// }
 .menu ul a {
   color: #fff;
   display: block;
-  padding: 5px 20px;
+  padding: 20px 20px;
   text-decoration: none;
+  background-color: black;
 }
 .menu ul a:hover {
-  color: rgba( gray , 0.5);
+  color: rgba( orange , 1);
   background-color: rgba( black , 0.5)
 }

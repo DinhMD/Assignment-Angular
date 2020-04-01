@@ -14,5 +14,7 @@ export class ProductmanagerComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {
   }
-  
+  showToggle(){
+    (document.querySelector(".homeSubmenu") as HTMLElement).style.height = "0";
+  }
 }
