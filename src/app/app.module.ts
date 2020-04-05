@@ -23,6 +23,7 @@ import { ManagerOderComponent } from "./manager-oder/manager-oder.component";
 import { ServicesService } from "./services.service";
 import { ProductdetailsComponent } from "./productdetails/productdetails.component";
 import { ContentsComponent } from "./contents/contents.component";
+import { ManagerProductDetailComponent } from './manager-product-detail/manager-product-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,8 @@ import { ContentsComponent } from "./contents/contents.component";
     ManagerCustomerComponent,
     ManagerOderComponent,
     ProductdetailsComponent,
-    ContentsComponent
+    ContentsComponent,
+    ManagerProductDetailComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [ServicesService],

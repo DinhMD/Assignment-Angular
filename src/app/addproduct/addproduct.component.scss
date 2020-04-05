@@ -1,0 +1,24 @@
+.input-form {
+  width: 100%;
+  border-top: solid 1px lightgray;
+  border-left: solid 1px lightgray;
+  border-right: solid 1px lightgray;
+  border-bottom: solid 3px green;
+  padding-top: 10px;
+  border-radius: 5px;
+  outline-style: none;
+}
+.modal-body {
+  label {
+    display: block;
+    padding-top: 20px;
+    margin-top: 10px;
+  }
+}
+.containerDialog {
+  width: 60%;
+  margin: 20px auto;
+}
+.notf {
+  color: red;
+}

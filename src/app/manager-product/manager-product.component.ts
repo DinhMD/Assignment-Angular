@@ -43,4 +43,9 @@ export class ManagerProductComponent implements OnInit {
   showfullItem() {
     this.items = this.litsItem;
   }
+  product: Products;
+  setProductDetail(item) {
+    console.log(item);
+    this.product = item;
+  }
 }

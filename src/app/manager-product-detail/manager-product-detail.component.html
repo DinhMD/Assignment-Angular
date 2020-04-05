@@ -1,16 +1,17 @@
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
-        <form id="formAdd" (ngSubmit)="saveData()">
+        <form id="formAdd2" (ngSubmit)="saveData()" *ngIf="product">
             <div class="modal-header">
-                <h4 class="modal-title text-center" style="width: 100%;">{{save}}</h4>
+                <h4 class="modal-title text-center" style="width: 100%;">Thông tin sản phẩm</h4>
             </div>
             <div class="modal-body row">
                 <div class="col-6">
                     <label>ID <span class="notf">{{idwarning}}</span>
-                        <input type="text" id="id" name="id" #id (keyup)="findID(id.value)" ngModel class="input-form form-control"
-                            placeholder=" Mã sản phẩm (ID).." required>
+                        <input type="text" id="id2" name="id" value="{{product.id}}" #id class="input-form form-control"
+                            placeholder=" Mã sản phẩm (ID).." disabled>
                     </label>
-                    <label>Loại <select class="input-form" name="type" ngModel id="type">
+
+                    <label>Loại <select class="input-form" name="type" value="{{product.type}}" id="type2">
                             <option value="">--Chọn loại--</option>
                             <option value="DIS">Màn hình</option>
                             <option value="CHA">Ghế</option>
@@ -18,20 +19,20 @@
                             <option value="HEA">Tai nghe</option>
                             <option value="MOU">Chuột</option>
                         </select></label>
-                    <label>Ảnh sản phẩm <span class="notf">{{picwarning}}</span><input id="picture" name="picture" type="text" #picture ngModel (keyup)="setPicture(picture.value)"
+                    <label>Ảnh sản phẩm <span class="notf">{{picwarning}}</span><input id="picture2" name="picture" type="text" #picture2 value="{{product.image}}" (keyup)="setPicture(picture2.value)"
                             class="input-form" placeholder=" Ảnh sản phẩm..(url)">
                     </label>
-                    <img src="{{picturelink}}" alt="" width="300">
+                    <img src="{{picture2.value}}" alt="" width="300">
                 </div>
                 <div class="col-6">
-                    <label>Tên <span class="notf">{{namewarning}}</span><input id="name" name="name" ngModel type="text" class="input-form" placeholder=" Tên sản phẩm.."></label>
-                    <label>Số lượng <input id="count" name="count" ngModel type="number" class="input-form" placeholder=" Số lượng"></label>
+                    <label>Tên <span class="notf">{{namewarning}}</span><input id="name2" name="name2" type="text" value="{{product.name}}" class="input-form" placeholder=" Tên sản phẩm.."></label>
+                    <label>Số lượng <input id="count" name="count" type="number" value="{{product.count}}"  class="input-form" placeholder=" Số lượng"></label>
                     <label>Giá (VND) <span class="notf">{{pricewarning}}</span>
-                        <input id="price" min="0" name="price" ngModel type="number" class="input-form"
+                        <input id="price2" min="0"  value="{{product.price}}" name="price" type="number" class="input-form"
                             placeholder=" Giá..(VND)"></label>
-                    <label>Giảm giá (%)<input id="sale" name="sale" ngModel type="number" class="input-form" min="0" max="100"
+                    <label>Giảm giá (%)<input id="sale2" name="sale"  type="number" value="{{product.sale}}" class="input-form" min="0" max="100"
                             placeholder=" Giảm giá..(%)"></label>
-                    <label>Chi tiết<textarea id="desc" name="desc" ngModel class="input-form" rows="10"
+                    <label>Chi tiết<textarea id="desc2" value="{{product.desc}}" name="desc" class="input-form" rows="10"
                             placeholder=" Mô tả chi tiết.."></textarea></label>
                 </div>
             </div>

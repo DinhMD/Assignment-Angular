@@ -1,4 +1,4 @@
-<button class="btn float-right bg-success"><strong>+</strong>Thêm sản phẩm</button>
+<button class="btn float-right bg-success" data-toggle="modal" data-target="#myModaladd"><strong>+</strong>Thêm sản phẩm</button>
 <h1 style="display: inline;" class="ml-2">Quản lý sản phẩm</h1>
 <div class="tbl-header">
     <table cellpadding="0" cellspacing="0" border="0">
@@ -19,7 +19,7 @@
         <tbody>
             <tr *ngFor="let item of items">
                 <td>{{item.id}}</td>
-                <td><a class="nameLink" routerLink="">{{item.name}}</a></td>
+                <td><a class="nameLink"  data-toggle="modal" data-target="#myModaldetail" (click)="setProductDetail(item)">{{item.name}}</a></td>
                 <td>{{item.price | currency:'VND':'symbol-narrow':'3.0':'fr'}}</td>
                 <td>{{item.count}}</td>
                 <td><a>Chi tiết</a></td>
@@ -28,3 +28,5 @@
         </tbody>
     </table>
 </div>
+<app-addproduct class="modal fade" id="myModaladd" role="dialog"></app-addproduct>
+<app-manager-product-detail class="modal fade" id="myModaldetail" role="dialog" [data]="product"></app-manager-product-detail>

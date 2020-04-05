@@ -30,7 +30,7 @@ export class ServicesService {
     return this.fullitems.filter(product => product.type === type)
   }
   getFullItem() {
-    return this.fullOrder;
+    return this.fullitems;
   }
   getFullOrder() {
     return this.fullOrder;
