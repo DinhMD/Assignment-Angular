@@ -25,4 +25,19 @@ export class ProductdetailsComponent implements OnInit {
   setProductType(type){
     this.productType = this.service.getItemType(type);
   }
+  setCount(action) {
+    let max = parseInt((document.querySelector("#input-count") as HTMLInputElement).max);
+    let inp = (document.querySelector("#input-count") as HTMLInputElement);
+    let index = parseInt(inp.value);
+    if (action == "+") {
+      if (index < max) {
+        index++;
+      }
+    } else {
+      if (index > 1) {
+        index--;
+      }
+    }
+    inp.value = "" + index;
+  }
 }
