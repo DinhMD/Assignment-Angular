@@ -22,8 +22,8 @@
                 <td><a class="nameLink"  data-toggle="modal" data-target="#myModaldetail" (click)="setProductDetail(item)">{{item.name}}</a></td>
                 <td>{{item.price | currency:'VND':'symbol-narrow':'3.0':'fr'}}</td>
                 <td>{{item.count}}</td>
-                <td><a>Chi tiết</a></td>
-                <td><a>Xóa</a></td>
+                <td><a data-toggle="modal" data-target="#myModaldetail" (click)="setProductDetail(item)">Chi tiết</a></td>
+                <td><a><i class="fas fa-trash-alt"></i></a></td>
             </tr>
         </tbody>
     </table>
