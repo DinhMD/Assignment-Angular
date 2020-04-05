@@ -6,9 +6,9 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-                <ul class="menu">
+                <ul class="menu" (mouseleave)="hideMenu()">
                     <a routerLink="" class="btnDrop" (mouseenter)="showMenu()" >Danh mục</a>
-                    <li (mouseleave)="hideMenu()">
+                    <li>
                         <ul class="dropForBtn">
                             <li>
                                 <a routerLink=""><i class="fas fa-tv pr-2"></i>Màn hình</a>
