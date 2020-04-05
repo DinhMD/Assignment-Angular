@@ -10,7 +10,7 @@ import { ServicesService } from "./services.service";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  title = "CodeSandbox";
+  title = "Davidmai";
   api = "https://5e7eae447a92ed001655fc7c.mockapi.io";
   fullitems: Products[];
   fullOrder: Order[];
