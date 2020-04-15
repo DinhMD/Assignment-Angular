@@ -1,6 +1,5 @@
 import { Injectable, OnInit } from "@angular/core";
-import { Products } from "./products";
-import { Order } from "./products";
+import { Products, Employ, Order, Customer } from './dataBean';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 @Injectable({
@@ -10,6 +9,8 @@ export class ServicesService {
   api = "https://5e7eae447a92ed001655fc7c.mockapi.io";
   fullitems: Products[];
   fullOrder: Order[];
+  fullEmploy: Employ[];
+  fullCustomer: Customer[];
   constructor(private http: HttpClient) {}
   getProduct(): Observable<Products[]> {
     return this.http.get<Products[]>(`${this.api}/products`);
@@ -19,6 +20,12 @@ export class ServicesService {
   }
   getOrder(): Observable<Order[]> {
     return this.http.get<Order[]>(`${this.api}/order`);
+  }
+  getEmploy(): Observable<Employ[]> {
+    return this.http.get<Employ[]>(`${this.api}/employ`);
+  }
+  getCustomer(): Observable<Customer[]> {
+    return this.http.get<Customer[]>(`${this.api}/customer`);
   }
   setFullItem(item) {
     this.fullitems = item;
@@ -31,8 +38,5 @@ export class ServicesService {
   }
   getFullItem() {
     return this.fullitems;
-  }
-  getFullOrder() {
-    return this.fullOrder;
   }
 }

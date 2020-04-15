@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Products } from "./products";
-import { Order } from "./products";
+import { Products } from "./dataBean";
+import { Order } from "./dataBean";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { ServicesService } from "./services.service";

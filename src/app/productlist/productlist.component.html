@@ -1,292 +1,202 @@
 <div class="linkbar row py-4 mt-2">
-	<div class="col px-4">
-		<a class="btnlink w-100 py-2" (click)="onLinkClick('display')"><span>Màn hình</span></a>
-	</div>
-	<div class="col px-4">
-		<a class="btnlink w-100 py-2" (click)="onLinkClick('chair')"><span>Ghế gaming</span></a>
-	</div>
-	<div class="col px-4">
-		<a class="btnlink w-100 py-2" (click)="onLinkClick('keyboard')"><span>Bàn phím</span></a>
-	</div>
-	<div class="col px-4">
-		<a class="btnlink w-100 py-2" (click)="onLinkClick('headphone')"><span>Tai nghe</span></a>
-	</div>
-	<div class="col px-4">
-		<a class="btnlink w-100 py-2" (click)="onLinkClick('mouse')"><span>Chuột</span></a>
-	</div>
+  <div class="col px-4">
+    <a class="btnlink w-100 py-2" (click)="onLinkClick('display')"><span>Màn hình</span></a>
+  </div>
+  <div class="col px-4">
+    <a class="btnlink w-100 py-2" (click)="onLinkClick('chair')"><span>Ghế gaming</span></a>
+  </div>
+  <div class="col px-4">
+    <a class="btnlink w-100 py-2" (click)="onLinkClick('keyboard')"><span>Bàn phím</span></a>
+  </div>
+  <div class="col px-4">
+    <a class="btnlink w-100 py-2" (click)="onLinkClick('headphone')"><span>Tai nghe</span></a>
+  </div>
+  <div class="col px-4">
+    <a class="btnlink w-100 py-2" (click)="onLinkClick('mouse')"><span>Chuột</span></a>
+  </div>
 </div>
 <hr />
 <div>
-	<!------>
+  <!------>
 
-	<!--BLOCK SECTION-->
-	<section class="">
-		<div class="contai">
-			<!--Slide-->
-			<div class="row bg-white">
-				<div class="col">
-					<div id="carouselExampleIndicators2" class="slidepro carousel slide row mt-3 mb-4"
-						data-ride="carousel" data-interval="2500">
-						<ol class="carousel-indicators"></ol>
-						<div class="carousel-inner">
-							<div *ngFor="let item of product; let i = index "
-								class="carousel-item {{i == 0 ? 'active':''}}">
-								<img
-                    class="imagebanner2 float-left"
-                    src="{{item.image}}"
-                    alt="First slide"
-                  />
-								<div class="float-left mt-5 ml-4">
-									<p class="" routerLink="/home/detail/{{item.id}}">{{item.name}}</p>
-									<label class="text-pricebanner"
-                      >Giá gốc:
-                      <span
-                        >{{item.price |
-                        currency:'VND':'symbol-narrow':'3.0':'fr'}}</span
-                      ></label>
-									<label class="sale-banner"
-                      >Giảm: <span>-{{item.sale}}%</span></label>
-									<label class="text-salebanner"
-                      >Khuyến mãi còn:
-                      <span
-                        >{{item.price - item.price*(item.sale/100) |
-                        currency:'VND':'symbol-narrow':'3.0':'fr'}}</span
-                      ></label>
-								</div>
-							</div>
-						</div>
-						<a class="carousel-control-prev" data-target="#carouselExampleIndicators2" role="button"
-							data-slide="prev">
-							<span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-							<span class="sr-only">Previous</span>
-						</a>
-						<a class="carousel-control-next" data-target="#carouselExampleIndicators2" role="button"
-							data-slide="next">
-							<span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-							<span class="sr-only">Next</span>
-						</a>
-					</div>
-				</div>
-			</div>
-			<!--Products 1-->
-			<div class="row">
-				<div class="col" id="display">
-					<div class="display row justify-content-around">
-						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 card"
-							*ngFor="let item of display | slice:0:4;">
-							<div class="card-form" routerLink="/home/detail/{{item.id}}">
-								<div class="image-wrapper">
-									<img
-                      src="{{item.image}}"
-                      alt="Ảnh sản phẩm"
-                      class="card-img-top"
-                    />
-                  </div>
-									<div class="card-body">
-										<input
-                      class="card-text"
-                      type="text"
-                      value="{{item.name}}"
-                      disabled
-                    />
-										<label class="text-price"
-                      >({{item.price |
-                      currency:'VND':'symbol-narrow':'3.0':'fr'}})</label>
-										<label class="sale">-{{item.sale}}%</label>
-										<label class="text-sale"
-                      >{{item.price - item.price*(item.sale/100) |
-                      currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--Products 2 - Chair-->
-				<div class="row">
-					<div class="col" id="chair">
-						<div class="row justify-content-around">
-							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 card"
-								*ngFor="let item of chair | slice:0:4">
-								<div class="card-form" routerLink="/home/detail/{{item.id}}">
-									<div class="image-wrapper">
-										<img
-                      src="{{item.image}}"
-                      alt="Ảnh sản phẩm"
-                      class="card-img-top"
-                    />
-                  </div>
-										<div class="card-body">
-											<input
-                      class="card-text"
-                      type="text"
-                      value="{{item.name}}"
-                      disabled
-                    />
-											<label class="text-price"
-                      >({{item.price |
-                      currency:'VND':'symbol-narrow':'3.0':'fr'}})</label>
-											<label class="sale">-{{item.sale}}%</label>
-											<label class="text-sale"
-                      >{{item.price - item.price*(item.sale/100) |
-                      currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--Banner-->
-					<div class="row bg-white pt-4 pb-4">
-						<div class="col">
-							<div class="title-content">
-								<img src="https://i.imgur.com/vL2kezQ.png" />
-            </div>
-							</div>
-						</div>
-						<!--Products 3 - Keyboard-->
-						<div class="row">
-							<div class="col" id="keyboard">
-								<div class="row justify-content-around">
-									<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 card"
-										*ngFor="let item of keyboard | slice:0:4">
-										<div class="card-form" routerLink="/home/detail/{{item.id}}">
-											<div class="image-wrapper">
-												<img
-                      src="{{item.image}}"
-                      alt="Ảnh sản phẩm"
-                      class="card-img-top"
-                    />
-                  </div>
-												<div class="card-body">
-													<input
-                      class="card-text"
-                      type="text"
-                      value="{{item.name}}"
-                      disabled
-                    />
-													<label class="text-price">
-                      ({{item.price |
-                      currency:'VND':'symbol-narrow':'3.0':'fr'}})</label>
-													<label class="sale">-{{item.sale}}%</label>
-													<label class="text-sale"
-                      >{{item.price - item.price*(item.sale/100) |
-                      currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!--Products 4 - headphone-->
-							<div class="row">
-								<div class="col" id="headphone">
-									<div class="row justify-content-around">
-										<div class="col-xl-2 col-lg-4 col-md-6 col-sm-12 card"
-											*ngFor="let item of headphone | slice:0:6">
-											<div class="card-form position-relative"
-												routerLink="/home/detail/{{item.id}}">
-												<div class="image-wrapper">
-													<img
-                      src="{{item.image}}"
-                      alt="Ảnh sản phẩm"
-                      class="card-img-top"
-                    />
-                  </div>
-													<div class="card-body text-center">
-														<input
-                      class="card-text"
-                      type="text"
-                      value="{{item.name}}"
-                      disabled
-                    />
-														<label class="text-price"
-                      >({{item.price |
-                      currency:'VND':'symbol-narrow':'3.0':'fr'}})</label>
-														<div class="position-absolute">
-															<button class="btn bg-danger text-white">
-                        -{{item.sale}}%
-                      </button>
-														</div>
-														<!-- <label class="sale">-{{item.sale}}%</label> -->
-														<label class="text-sale"
-                      >{{item.price - item.price*(item.sale/100) |
-                      currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<!--Products 5 - mouse-->
-								<div class="row pb-4 bg-white" id="mouse">
-									<div class="col">
-										<div class="row justify-content-around">
-											<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 card"
-												*ngFor="let item of mouse | slice:0:4">
-												<div class="card-form" routerLink="/home/detail/{{item.id}}">
-													<div class="image-wrapper">
-														<img
-                      src="{{item.image}}"
-                      alt="Ảnh sản phẩm"
-                      class="card-img-top"
-                    />
-                  </div>
-														<div class="card-body">
-															<input
-                      class="card-text"
-                      type="text"
-                      value="{{item.name}}"
-                      disabled
-                    />
-															<label class="text-price"
-                      >({{item.price |
-                      currency:'VND':'symbol-narrow':'3.0':'fr'}})</label>
-															<label class="sale">-{{item.sale}}%</label>
-															<label class="text-sale"
-                      >{{item.price - item.price*(item.sale/100) |
-                      currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="row pt-4 pb-4" style="background-color:#fdf8cb3b ">
-										<div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 pt-3">
-											<p class="font-1">
-												<span style="font-size:21px;" class="text-dark font-weight-bold"
-                >Đăng ký nhận email shop</span>
-												<br />Nhận email cập nhật về sản phẩm mới và các ưu đãi!
-            </p>
-										</div>
-										<div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
-											<form action="#" class="subscribe-form">
-												<div class="form-group d-flex mt-4">
-													<input
-                  type="text"
-                  class="form-control"
-                  placeholder="Nhập email của bạn..."
-                  style="height: 50px;"
-                />
-													<input
-                  type="submit"
-                  value="Gửi"
-                  class="submit px-3 btn bg-success text-white"
-                />
+  <!--BLOCK SECTION-->
+  <section class="">
+    <div class="contai">
+      <!--Slide-->
+      <div class="row bg-white">
+        <div class="col">
+          <div id="carouselExampleIndicators2" class="slidepro carousel slide row mt-3 mb-4" data-ride="carousel"
+            data-interval="2500">
+            <ol class="carousel-indicators"></ol>
+            <div class="carousel-inner">
+              <div *ngFor="let item of product; let i = index " class="carousel-item {{i == 0 ? 'active':''}}">
+                <img class="imagebanner2 float-left" src="{{item.image}}" alt="First slide" />
+                <div class="float-left mt-5 ml-4">
+                  <p class="" routerLink="/home/detail/{{item.id}}">{{item.name}}</p>
+                  <label class="text-pricebanner">Giá gốc:
+                    <span>{{item.price |
+                        currency:'VND':'symbol-narrow':'3.0':'fr'}}</span></label>
+                  <label class="sale-banner">Giảm: <span>-{{item.sale}}%</span></label>
+                  <label class="text-salebanner">Khuyến mãi còn:
+                    <span>{{item.price - item.price*(item.sale/100) |
+                        currency:'VND':'symbol-narrow':'3.0':'fr'}}</span></label>
+                </div>
               </div>
-											</form>
-										</div>
-									</div>
-								</div>
-	</section>
+            </div>
+            <a class="carousel-control-prev" data-target="#carouselExampleIndicators2" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" data-target="#carouselExampleIndicators2" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!--Products 1-->
+      <div class="row">
+        <div class="col" id="display">
+          <div class="display row justify-content-around">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 card" *ngFor="let item of display | slice:0:4;">
+              <div class="card-form" routerLink="/home/detail/{{item.id}}">
+                <div class="image-wrapper">
+                  <img src="{{item.image}}" alt="Ảnh sản phẩm" class="card-img-top" />
+                </div>
+                <div class="card-body">
+                  <input class="card-text" type="text" value="{{item.name}}" disabled />
+                  <label class="text-price">({{item.price |
+                      currency:'VND':'symbol-narrow':'3.0':'fr'}})</label>
+                  <label class="sale">-{{item.sale}}%</label>
+                  <label class="text-sale">{{item.price - item.price*(item.sale/100) |
+                      currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Products 2 - Chair-->
+      <div class="row">
+        <div class="col" id="chair">
+          <div class="row justify-content-around">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 card" *ngFor="let item of chair | slice:0:4">
+              <div class="card-form" routerLink="/home/detail/{{item.id}}">
+                <div class="image-wrapper">
+                  <img src="{{item.image}}" alt="Ảnh sản phẩm" class="card-img-top" />
+                </div>
+                <div class="card-body">
+                  <input class="card-text" type="text" value="{{item.name}}" disabled />
+                  <label class="text-price">({{item.price |
+                      currency:'VND':'symbol-narrow':'3.0':'fr'}})</label>
+                  <label class="sale">-{{item.sale}}%</label>
+                  <label class="text-sale">{{item.price - item.price*(item.sale/100) |
+                      currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Banner-->
+      <div class="row bg-white pt-4 pb-4">
+        <div class="col">
+          <div class="title-content">
+            <img src="https://i.imgur.com/vL2kezQ.png" />
+          </div>
+        </div>
+      </div>
+      <!--Products 3 - Keyboard-->
+      <div class="row">
+        <div class="col" id="keyboard">
+          <div class="row justify-content-around">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 card" *ngFor="let item of keyboard | slice:0:4">
+              <div class="card-form" routerLink="/home/detail/{{item.id}}">
+                <div class="image-wrapper">
+                  <img src="{{item.image}}" alt="Ảnh sản phẩm" class="card-img-top" />
+                </div>
+                <div class="card-body">
+                  <input class="card-text" type="text" value="{{item.name}}" disabled />
+                  <label class="text-price">
+                    ({{item.price |
+                      currency:'VND':'symbol-narrow':'3.0':'fr'}})</label>
+                  <label class="sale">-{{item.sale}}%</label>
+                  <label class="text-sale">{{item.price - item.price*(item.sale/100) |
+                      currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Products 4 - headphone-->
+      <div class="row">
+        <div class="col" id="headphone">
+          <div class="row justify-content-around">
+            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-12 card" *ngFor="let item of headphone | slice:0:6">
+              <div class="card-form position-relative" routerLink="/home/detail/{{item.id}}">
+                <div class="image-wrapper">
+                  <img src="{{item.image}}" alt="Ảnh sản phẩm" class="card-img-top" />
+                </div>
+                <div class="card-body text-center">
+                  <input class="card-text" type="text" value="{{item.name}}" disabled />
+                  <label class="text-price">({{item.price |
+                      currency:'VND':'symbol-narrow':'3.0':'fr'}})</label>
+                  <div class="position-absolute">
+                    <button class="btn bg-danger text-white">
+                      -{{item.sale}}%
+                    </button>
+                  </div>
+                  <!-- <label class="sale">-{{item.sale}}%</label> -->
+                  <label class="text-sale">{{item.price - item.price*(item.sale/100) |
+                      currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Products 5 - mouse-->
+      <div class="row pb-4 bg-white" id="mouse">
+        <div class="col">
+          <div class="row justify-content-around">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 card" *ngFor="let item of mouse | slice:0:4">
+              <div class="card-form" routerLink="/home/detail/{{item.id}}">
+                <div class="image-wrapper">
+                  <img src="{{item.image}}" alt="Ảnh sản phẩm" class="card-img-top" />
+                </div>
+                <div class="card-body">
+                  <input class="card-text" type="text" value="{{item.name}}" disabled />
+                  <label class="text-price">({{item.price |
+                      currency:'VND':'symbol-narrow':'3.0':'fr'}})</label>
+                  <label class="sale">-{{item.sale}}%</label>
+                  <label class="text-sale">{{item.price - item.price*(item.sale/100) |
+                      currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row pt-4 pb-4" style="background-color:#fdf8cb3b ">
+        <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 pt-3">
+          <p class="font-1">
+            <span style="font-size:21px;" class="text-dark font-weight-bold">Đăng ký nhận email shop</span>
+            <br />Nhận email cập nhật về sản phẩm mới và các ưu đãi!
+          </p>
+        </div>
+        <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+          <form action="#" class="subscribe-form">
+            <div class="form-group d-flex mt-4">
+              <input type="text" class="form-control" placeholder="Nhập email của bạn..." style="height: 50px;" />
+              <input type="submit" value="Gửi" class="submit px-3 btn bg-success text-white" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

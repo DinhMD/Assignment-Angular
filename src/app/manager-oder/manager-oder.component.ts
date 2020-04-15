@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Order } from "../products";
+import { Order } from "../dataBean";
 import { ServicesService } from "../services.service";
 import { registerLocaleData } from "@angular/common";
 import localeFr from "@angular/common/locales/fr";

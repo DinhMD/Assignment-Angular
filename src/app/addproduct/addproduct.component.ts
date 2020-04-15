@@ -1,6 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { ServicesService } from "../services.service";
-import { Products } from "../products";
+import { Products } from "../dataBean";
 import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-addproduct',
