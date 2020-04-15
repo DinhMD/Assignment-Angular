@@ -14,16 +14,20 @@ export class ProductdetailsComponent implements OnInit {
   ) {}
   produc: Products;
   productType : Products[];
+  id;
   ngOnInit(): void {
     window.scrollTo(0,0);
     this.active.params.subscribe(param => this.setProductId(param.id));
   }
   setProductId(id) {
+    this.id = id;
+    (document.querySelector("#input-count") as HTMLInputElement).value = "1";
     this.produc = this.service.getItemId(id); 
     this.setProductType(this.produc.type);
   }
   setProductType(type){
     this.productType = this.service.getItemType(type);
+    this.productType = this.productType.filter(item => item.id != this.id);
   }
   setCount(action) {
     let max = parseInt((document.querySelector("#input-count") as HTMLInputElement).max);
