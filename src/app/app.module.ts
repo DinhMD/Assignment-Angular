@@ -25,6 +25,7 @@ import { ServicesService } from "./services.service";
 import { ProductdetailsComponent } from "./productdetails/productdetails.component";
 import { ContentsComponent } from "./contents/contents.component";
 import { ManagerProductDetailComponent } from './manager-product-detail/manager-product-detail.component';
+import { ProductTypeComponent } from './product-type/product-type.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { ManagerProductDetailComponent } from './manager-product-detail/manager-
     ManagerOderComponent,
     ProductdetailsComponent,
     ContentsComponent,
-    ManagerProductDetailComponent
+    ManagerProductDetailComponent,
+    ProductTypeComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgbModule],
   providers: [ServicesService],

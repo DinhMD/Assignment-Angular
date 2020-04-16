@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from "@angular/router";
 import { LoginComponent } from "./login/login.component";
 import { MainComponent } from "./main/main.component";
@@ -11,6 +11,7 @@ import { ManagerProductComponent } from "./manager-product/manager-product.compo
 import { ManagerOderComponent } from "./manager-oder/manager-oder.component";
 import { ProductdetailsComponent } from "./productdetails/productdetails.component";
 import { ContentsComponent } from "./contents/contents.component";
+import { ProductTypeComponent } from './product-type/product-type.component';
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       { path: "detail/:id", component: ProductdetailsComponent },
-      { path: "", component: ContentsComponent }
+      { path: "", component: ContentsComponent },
+      { path: "listproduct/:type", component: ProductTypeComponent }
     ]
   },
   { path: "404", component: ErropageComponent },
