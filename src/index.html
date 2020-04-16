@@ -31,21 +31,6 @@
         });
       })
       .resize();
-    $(document).ready(function () {
-      $(".pass_show").append('<span class="ptxt">Show</span>');
-    });
-    $(document).on("click", ".ptxt", function () {
-      $(this).text($(this).text() == "Show" ? "Hide" : "Show");
-
-      $(this)
-        .parent()
-        .parent()
-        .children(2)
-        .children("input")
-        .attr("type", function (index, attr) {
-          return attr == "password" ? "text" : "password";
-        });
-    });
     $(".multi-item-carousel").carousel({
       interval: false
     });

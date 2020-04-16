@@ -5,9 +5,8 @@
       <tr>
         <th>Tên nhân viên</th>
         <th>Tài khoản</th>
-        <th>Mật khẩu</th>
-        <th>Show</th>
-        <th>Xóa</th>
+        <th>Email</th>
+        <th>Phone</th>
       </tr>
     </thead>
   </table>
@@ -18,15 +17,8 @@
       <tr *ngFor="let item of customer">
         <td>{{item.name}}</td>
         <td>{{item.username}}</td>
-        <td>
-          <input
-            type="password"
-            value="{{item.password}}"
-            class="form-control passform"
-          />
-        </td>
-        <td><span class="ptxt">Show</span></td>
-        <td><a><i class="fas fa-trash-alt"></i></a></td>
+        <td>{{item.email}}</td>
+        <td>{{item.phone}}</td>
       </tr>
     </tbody>
   </table>
