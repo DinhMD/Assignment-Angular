@@ -19,7 +19,7 @@ export class ProductdetailsComponent implements OnInit {
   id;
   ngOnInit(): void {
     window.scrollTo(0, 0);
-    this.active.params.subscribe(param => this.setProductId(param.id));
+    this.active.params.subscribe(param => this.setProduct(param.id));
   }
   checkValue(index) {
     if (index > this.produc.count) {
@@ -28,10 +28,13 @@ export class ProductdetailsComponent implements OnInit {
       (document.querySelector("#input-count") as HTMLInputElement).value = "1";
     }
   }
-  setProductId(id) {
+  setProduct(id){
+    this.service.getProductById(id).subscribe(responese => this.setProductId(responese, id));
+  }
+  setProductId(pro, id) {
     this.id = id;
     (document.querySelector("#input-count") as HTMLInputElement).value = "1";
-    this.produc = this.service.getItemId(id);
+    this.produc = pro;
     this.titleService.setTitle("Gear Shop - " + this.produc.name);
     this.setProductType(this.produc.type);
   }
