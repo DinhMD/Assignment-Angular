@@ -45,7 +45,6 @@ export class ManagerProductComponent implements OnInit {
   }
   product: Products;
   setProductDetail(item) {
-    console.log(item);
     this.product = item;
   }
 }
