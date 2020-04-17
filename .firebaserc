@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "assignmentangular-aa80d"
+    "default": "assignmentangular-aa80d",
+    "gearshop": "assignmentweb207"
   }
 }
