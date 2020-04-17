@@ -11,11 +11,11 @@
         <span>{{produc.price - produc.price*(produc.sale/100) |
             currency:'VND':'symbol-narrow':'3.0':'fr'}}</span></label>
       <div class="btn-group">
-        <button class="btnCount bg-primary" (click)="setCount('-')">-</button>
+        <button class="btnCount bg-primary" (click)="setCount('-')"><i class="fas fa-minus"></i></button>
         <label class="label-count">
-          <input type="number" id="input-count" max="{{produc.count}}" min="1" value="1" />
+          <input type="number" #countvalue id="input-count" (keyup)="checkValue(countvalue.value)" max="{{produc.count}}" min="1" value="1" />
         </label>
-        <button class="btnCount bg-primary" (click)="setCount('+')">+</button>
+        <button class="btnCount bg-primary" (click)="setCount('+')"><i class="fas fa-plus"></i></button>
       </div>
       <div class="pt-4">
         <button class="btn btn-danger">Mua</button>

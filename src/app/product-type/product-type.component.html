@@ -27,6 +27,8 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <ngb-pagination [collectionSize]="maxpage" [(page)]="page" [maxSize]="5" [boundaryLinks]="true" (pageChange)="showPage()"></ngb-pagination>
+    </div>
   </div>
-  <ngb-pagination [collectionSize]="maxpage" [(page)]="page" [maxSize]="5" [boundaryLinks]="true" (pageChange)="showPage()"></ngb-pagination>
 </div>

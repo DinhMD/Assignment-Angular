@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-sign',
   templateUrl: './sign.component.html',
@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle("Gear Shop - Đăng ký");
   }
 
 }

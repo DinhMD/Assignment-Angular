@@ -11,6 +11,7 @@ export class ServicesService {
   fullOrder: Order[];
   fullEmploy: Employ[];
   fullCustomer: Customer[];
+  appTitle = "Gear Shop - Gaming Gear Center";
   constructor(private http: HttpClient) {}
   getProduct(): Observable<Products[]> {
     return this.http.get<Products[]>(`${this.api}/products`);

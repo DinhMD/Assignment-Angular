@@ -3,6 +3,7 @@ import { Products } from '../dataBean'
 import { ServicesService } from '../services.service';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-productmanager',
@@ -11,8 +12,9 @@ import localeFr from '@angular/common/locales/fr';
 })
 
 export class ProductmanagerComponent implements OnInit {
-  constructor() { }
+  constructor(private titleService : Title) { }
   ngOnInit(): void {
+    this.titleService.setTitle("Gear Shop - Manager Center");
   }
   showToggle(){
     (document.querySelector(".homeSubmenu") as HTMLElement).style.height = "0";

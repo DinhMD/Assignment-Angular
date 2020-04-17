@@ -4,6 +4,7 @@ import { Order } from "./dataBean";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { ServicesService } from "./services.service";
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -14,7 +15,7 @@ export class AppComponent {
   api = "https://5e7eae447a92ed001655fc7c.mockapi.io";
   fullitems: Products[];
   fullOrder: Order[];
-  constructor(private http: HttpClient, private service: ServicesService) {}
+  constructor(private http: HttpClient, private service: ServicesService, private titleService: Title) { }
   ngOnInit(): void {
     this.getProduct().subscribe(
       response => this.setItem(response),
@@ -23,6 +24,7 @@ export class AppComponent {
   }
   setItem(item) {
     this.service.setFullItem(item);
+    this.titleService.setTitle("Gear Shop - Gaming Gear Center");
   }
   getProduct(): Observable<Products[]> {
     return this.http.get<Products[]>(`${this.api}/products`);

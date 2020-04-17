@@ -2,7 +2,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Title } from '@angular/platform-browser';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -50,7 +51,7 @@ import { ProductTypeComponent } from './product-type/product-type.component';
     ProductTypeComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgbModule],
-  providers: [ServicesService],
+  providers: [ServicesService, Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
