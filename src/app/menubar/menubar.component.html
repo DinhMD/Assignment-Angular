@@ -35,11 +35,11 @@
             <li class="nav-item">
                 <a class="btnbar btn btn-outline-light my-2 my-sm-0" routerLink="/home">Khuyến mãi</a>
             </li>
-            <form class="formsearch form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2 searchinput" type="search"
+            <form #formSearch="ngForm" (ngSubmit)="search(formSearch)" class="formsearch form-inline my-2 my-lg-0">
+                <input name="textSearch" ngModel class="form-control mr-sm-2 searchinput" type="search"
                     placeholder="Màn hình, tai nghe, bàn phím..." />
-                <i class="btnsearch my-2 my-sm-0"><img
-                        src="https://img.icons8.com/wired/50/000000/search.png" /></i>
+                <button type="submit" class="btnsearch my-2 my-sm-0"><img
+                        src="https://img.icons8.com/wired/50/000000/search.png" /></button>
             </form>
         </ul>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">

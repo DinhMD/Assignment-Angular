@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-menubar',
   templateUrl: './menubar.component.html',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenubarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -22,5 +25,11 @@ export class MenubarComponent implements OnInit {
       (document.querySelector(".dropForBtn") as HTMLElement).style.visibility =
         "hidden";
     }
+  }
+  search(form) {
+    if (form.value.textSearch != "") {
+      this.router.navigate(["home/search/" + form.value.textSearch]);
+    }
+
   }
 }

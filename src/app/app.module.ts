@@ -27,6 +27,7 @@ import { ProductdetailsComponent } from "./productdetails/productdetails.compone
 import { ContentsComponent } from "./contents/contents.component";
 import { ManagerProductDetailComponent } from './manager-product-detail/manager-product-detail.component';
 import { ProductTypeComponent } from './product-type/product-type.component';
+import { SearchComponent } from './search/search.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { ProductTypeComponent } from './product-type/product-type.component';
     ProductdetailsComponent,
     ContentsComponent,
     ManagerProductDetailComponent,
-    ProductTypeComponent
+    ProductTypeComponent,
+    SearchComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgbModule],
   providers: [ServicesService, Title],

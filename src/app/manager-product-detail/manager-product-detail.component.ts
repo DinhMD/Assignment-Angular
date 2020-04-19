@@ -24,27 +24,6 @@ export class ManagerProductDetailComponent implements OnInit {
   pricewarning;
   ngOnInit(): void {
   }
-  openData(productset) {
-    console.log("Productset: " + productset.image);
-      let name = (document.querySelector("#name2") as HTMLInputElement);
-      let price = (document.querySelector("#price2") as HTMLInputElement);
-      let sale = (document.querySelector("#sale2") as HTMLInputElement);
-      let desc = (document.querySelector("#desc2") as HTMLInputElement);
-      let img = (document.querySelector("#picture2") as HTMLInputElement);
-      let type = (document.querySelector("#type2") as HTMLInputElement);
-      let count = (document.querySelector("#count2") as HTMLInputElement);
-      let idinp = (document.querySelector("#id2") as HTMLInputElement);
-      // console.log(name);
-      // name.value = "" + productset.name;
-      // price.value = "" + productset.price;
-      // sale.value = "" + productset.sale;
-      // desc.value = "" + productset.desc;
-      // img.value = "" + productset.image;
-      // type.value = "" + productset.type;
-      // count.value = "" + productset.count;
-      // idinp.value = "" + productset.id;
-      this.picturelink = productset.image;
-  }
   setPicture(url) {
     this.picturelink = url;
   }

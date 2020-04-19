@@ -12,6 +12,7 @@ import { ManagerOderComponent } from "./manager-oder/manager-oder.component";
 import { ProductdetailsComponent } from "./productdetails/productdetails.component";
 import { ContentsComponent } from "./contents/contents.component";
 import { ProductTypeComponent } from './product-type/product-type.component';
+import { SearchComponent } from './search/search.component';
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
     children: [
       { path: "detail/:id", component: ProductdetailsComponent },
       { path: "", component: ContentsComponent },
+      {path: "search/:text", component: SearchComponent},
       { path: "listproduct/:type", component: ProductTypeComponent }
     ]
   },

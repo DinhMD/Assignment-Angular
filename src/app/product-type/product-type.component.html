@@ -1,11 +1,14 @@
 <div class="container">
-  <div class="row pt-5">
-    <h2 class="d-block col-12">{{typeName}}</h2>
-    <p class="d-block col-12 bg-light p-3"><a routerLink="/home">Trang chủ</a><i
-        class="fas fa-caret-right pl-2 pr-2"></i>{{typeDesc}}</p>
+  <h2 class="row pt-5 ml-1">{{typeName}}</h2>
+  <div class="row pt-2 bg-light justify-content-between titlePage">
+    <div class="col-6"><a routerLink="/home">Trang chủ</a>
+      <i class="fas fa-caret-right pl-2 pr-2"></i>
+      <label>{{typeDesc}}</label>
+    </div>
+    <input type="text col-6" #search (keyup)="searchName(search.value)" placeholder=" Tìm kiếm sản phẩm..">
   </div>
   <div class="row">
-    <div class="row justify-content-left">
+    <div class="row justify-content-left w-100">
       <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 card" *ngFor="let item of listPage">
         <div class="card-form" routerLink="/home/detail/{{item.id}}">
           <div class="image-wrapper">
@@ -27,8 +30,9 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <ngb-pagination [collectionSize]="maxpage" [(page)]="page" [maxSize]="5" [boundaryLinks]="true" (pageChange)="showPage()"></ngb-pagination>
+    <div class="row w-100 justify-content-center">
+      <ngb-pagination [collectionSize]="maxpage" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"
+        (pageChange)="showPage()"></ngb-pagination>
     </div>
   </div>
 </div>

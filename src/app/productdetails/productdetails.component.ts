@@ -17,9 +17,29 @@ export class ProductdetailsComponent implements OnInit {
   produc: Products;
   productType: Products[];
   id;
+  textType;
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.active.params.subscribe(param => this.setProduct(param.id));
+  }
+  setProduct(id){
+    this.service.getProduct().subscribe(responese => this.setProductId(responese, id));
+  }
+  setProductId(pro, id) {
+    this.id = id;
+    (document.querySelector("#input-count") as HTMLInputElement).value = "1";
+    this.produc = pro.find(item => item.id == id);
+    switch (this.produc.type) {
+      case "DIS": { this.textType = "Màn hình"; break; }
+      case "CHA": { this.textType = "Ghế"; break; }
+      case "KEY": { this.textType = "Bàn phím"; break; }
+      case "HEA": { this.textType = "Tai nghe";break; }
+      case "MOU": { this.textType = "Chuột"; break; }
+    }
+    this.titleService.setTitle("Gear Shop - " + this.produc.name);
+    console.log(this.produc);
+    this.productType = pro.filter(item => item.type == this.produc.type && item.id != id);
+    console.log(this.productType);
   }
   checkValue(index) {
     if (index > this.produc.count) {
@@ -27,20 +47,6 @@ export class ProductdetailsComponent implements OnInit {
     } else if (index != "" && index < 1) {
       (document.querySelector("#input-count") as HTMLInputElement).value = "1";
     }
-  }
-  setProduct(id){
-    this.service.getProductById(id).subscribe(responese => this.setProductId(responese, id));
-  }
-  setProductId(pro, id) {
-    this.id = id;
-    (document.querySelector("#input-count") as HTMLInputElement).value = "1";
-    this.produc = pro;
-    this.titleService.setTitle("Gear Shop - " + this.produc.name);
-    this.setProductType(this.produc.type);
-  }
-  setProductType(type) {
-    this.productType = this.service.getItemType(type);
-    this.productType = this.productType.filter(item => item.id != this.id);
   }
   setCount(action) {
     let max = parseInt((document.querySelector("#input-count") as HTMLInputElement).max);

@@ -1,7 +1,20 @@
-<div class="top">
+<div class="top w-100">
   <h1 class="ml-2">Quản lý sản phẩm</h1>
-  <button class="btn btn-outline-danger" data-toggle="modal" data-target="#myModaladd"><i
-      class="far fa-plus-square pr-2"></i>Thêm sản phẩm</button>
+  <div class="row w-100 ml-1 justify-content-between">
+    <button class="btn btn-outline-danger" data-toggle="modal" data-target="#myModaladd"><i
+        class="far fa-plus-square pr-2"></i>Thêm sản phẩm</button>
+    <div class="col-4 justify-content-end">
+      <input class="h-100 col-9" id="textS" #textsearch type="text" (keyup)="searchPro(textsearch.value, typeSearch.value)" placeholder=" Tìm kiếm..">
+      <select #typeSearch class="h-100 col-3" id="selectS" (change)="setDefaultSearch()">
+        <option value="id">ID</option>
+        <option value="name">Tên</option>
+        <option value="count">Số lượng</option>
+        <option value="price">Giá</option>
+      </select>
+    </div>
+
+  </div>
+
 </div>
 <div class="tbl-header">
   <table cellpadding="0" cellspacing="0" border="0">
@@ -19,13 +32,14 @@
 </div>
 <div class="tbl-content">
   <table cellpadding="0" cellspacing="0" border="0">
-    <tbody>
+    <tbody id="table">
       <tr *ngFor="let item of items">
         <td>{{item.id}}</td>
         <td><a class="nameLink" data-toggle="modal" data-target="#myModaldetail"
             (click)="setProductDetail(item)">{{item.name}}</a></td>
         <td>{{item.price | currency:'VND':'symbol-narrow':'3.0':'fr'}}</td>
         <td>{{item.count}}</td>
+        <td hidden>{{item.type}}</td>
         <td><a data-toggle="modal" data-target="#myModaldetail" (click)="setProductDetail(item)">Chi tiết</a></td>
         <td><a><i class="fas fa-trash-alt"></i></a></td>
       </tr>

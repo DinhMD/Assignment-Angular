@@ -2,6 +2,7 @@ import { Injectable, OnInit } from "@angular/core";
 import { Products, Employ, Order, Customer } from './dataBean';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { products } from '../../../dinhmdph07327-pt14302-angular/src/app/dataimp';
 @Injectable({
   providedIn: "root"
 })
@@ -28,16 +29,10 @@ export class ServicesService {
   getCustomer(): Observable<Customer[]> {
     return this.http.get<Customer[]>(`${this.api}/customer`);
   }
-  setFullItem(item) {
-    this.fullitems = item;
+  saveProduct(product): Observable<Products> {
+    return this.http.post<Products>(`${this.api}`, product);
   }
-  getItemId(id) {
-    return this.fullitems.find(product => product.id === id);
-  }
-  getItemType(type){
-    return this.fullitems.filter(product => product.type === type)
-  }
-  getFullItem() {
-    return this.fullitems;
+  updateProduct(product): Observable<Products> {
+    return this.http.put<Products>(`${this.api}/${product.id}`, product);
   }
 }

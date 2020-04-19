@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { Products } from "../dataBean";
+import { Products } from '../dataBean';
 import { ServicesService } from "../services.service";
 import { registerLocaleData } from "@angular/common";
 import localeFr from "@angular/common/locales/fr";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute,Router } from "@angular/router";
+import { Route } from '@angular/compiler/src/core';
 
 @Component({
   selector: "app-manager-product",
@@ -14,9 +15,11 @@ export class ManagerProductComponent implements OnInit {
   litsItem: Products[];
   constructor(
     private service: ServicesService,
-    private activate: ActivatedRoute
+    private activate: ActivatedRoute,
+    private router: Router
   ) {}
   items: Products[];
+  itemfull: Products[];
   ngOnInit(): void {
     this.service
       .getProduct()
@@ -47,4 +50,59 @@ export class ManagerProductComponent implements OnInit {
   setProductDetail(item) {
     this.product = item;
   }
+
+  setDefaultSearch() {
+    let ty = (document.querySelector("#selectS") as HTMLSelectElement).value;
+    let tx = (document.querySelector("#textS") as HTMLInputElement).value = null;
+    this.searchPro("", ty);
+  }
+  searchPro(text, ts) {
+    let tb = (document.querySelector("#table") as HTMLTableElement).children;
+    
+    if (text != "") {
+    if (ts == "id") {
+        for(var i = 0; i < tb.length; i++) {
+          if (tb[i].children[0].innerHTML != text) {
+            (tb[i] as HTMLElement).style.display = 'none';
+          }
+        }
+    }
+
+    if (ts == "name") {
+      for(var i = 0; i < tb.length; i++) {
+        if (tb[i].children[1].innerHTML.toLowerCase().indexOf(text.toLowerCase()) > -1) {
+          (tb[i] as HTMLElement).style.display = '';
+        } else {
+          (tb[i] as HTMLElement).style.display = 'none';
+        }
+      }
+    }
+
+    if (ts == "count") {
+      for(var i = 0; i < tb.length; i++) {
+        if (tb[i].children[3].innerHTML == text) {
+          (tb[i] as HTMLElement).style.display = '';
+        } else {
+          (tb[i] as HTMLElement).style.display = 'none';
+        }
+      }
+    }
+
+    if (ts == "price") {
+      for(var i = 0; i < tb.length; i++) {
+        if (tb[i].children[2].innerHTML == text) {
+          (tb[i] as HTMLElement).style.display = '';
+        } else {
+          (tb[i] as HTMLElement).style.display = 'none';
+        }
+      }
+    }
+
+  } else {
+    for(var i = 0; i < tb.length; i++) {
+        (tb[i] as HTMLElement).style.display = '';
+    }
+  }
+  }
+ 
 }

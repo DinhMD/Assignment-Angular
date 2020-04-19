@@ -1,0 +1,33 @@
+<div class="container">
+  <h2 class="row pt-5 ml-1">Tìm kiếm</h2>
+  <div class="row pt-2 bg-light justify-content-between titlePage">
+    <label>Kết quả tìm kiếm cho "{{textSearch}}"</label>
+  </div>
+  <div class="row {{listPage.length > 2 ? 'justify-content-left':'justify-content-center'}} w-100">
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 card"
+      *ngFor="let item of listPage">
+      <div class="card-form" routerLink="/home/detail/{{item.id}}">
+        <div class="image-wrapper">
+          <img src="{{item.image}}" alt="Ảnh sản phẩm" class="card-img-top" />
+        </div>
+        <div class="card-body">
+          <input class="card-text" type="text" value="{{item.name}}" disabled />
+          <label class="text-price">
+            ({{item.price |
+                          currency:'VND':'symbol-narrow':'3.0':'fr'}})</label>
+          <div class="position-absolute">
+            <button class="btn bg-danger text-white">
+              -{{item.sale}}%
+            </button>
+          </div>
+          <label class="text-sale">{{item.price - item.price*(item.sale/100) |
+                          currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row w-100 justify-content-center">
+    <ngb-pagination [collectionSize]="maxpage" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"
+      (pageChange)="showPage()"></ngb-pagination>
+  </div>
+</div>
