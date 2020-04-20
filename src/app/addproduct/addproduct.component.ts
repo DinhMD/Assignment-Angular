@@ -3,6 +3,7 @@ import { ServicesService } from "../services.service";
 import { Products } from '../dataBean';
 import { NgForm } from '@angular/forms';
 import { threadId } from 'worker_threads';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-addproduct',
   templateUrl: './addproduct.component.html',
@@ -11,6 +12,7 @@ import { threadId } from 'worker_threads';
 export class AddproductComponent implements OnInit {
   constructor(
     private service: ServicesService,
+    private router: Router
   ) { }
   listItem: Products[];
   picturelink;
@@ -171,9 +173,9 @@ export class AddproductComponent implements OnInit {
   }
   addProduct(pro) {
     if (this.add) {
-      this.service.saveProduct(pro).subscribe(data => console.log(data))
+      this.service.saveProduct(pro).subscribe(data =>  window.location.reload());
     } else {
-      this.service.updateProduct(pro).subscribe(data => console.log(data))
+      this.service.updateProduct(pro).subscribe(data =>  window.location.reload());
     }
   }
 }

@@ -1,7 +1,7 @@
 
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
-        <form id="formAdd2" (ngSubmit)="saveData()" *ngIf="product">
+        <form #form="ngForm" (ngSubmit)="saveData()" *ngIf="product">
             <div class="modal-header">
                 <h4 class="modal-title text-center" style="width: 100%;">Thông tin sản phẩm</h4>
             </div>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-6">
                     <label>Tên <span class="notf">{{namewarning}}</span><input id="name2" name="name2" type="text" value="{{product.name}}" class="input-form" placeholder=" Tên sản phẩm.."></label>
-                    <label>Số lượng <input id="count" name="count" type="number" value="{{product.count}}"  class="input-form" placeholder=" Số lượng"></label>
+                    <label>Số lượng <input id="count2" name="count" type="number" value="{{product.count}}"  class="input-form" placeholder=" Số lượng"></label>
                     <label>Giá (VND) <span class="notf">{{pricewarning}}</span>
                         <input id="price2" min="0"  value="{{product.price}}" name="price" type="number" class="input-form"
                             placeholder=" Giá..(VND)"></label>

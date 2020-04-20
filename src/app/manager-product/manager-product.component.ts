@@ -1,11 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { Products } from '../dataBean';
 import { ServicesService } from "../services.service";
 import { registerLocaleData } from "@angular/common";
 import localeFr from "@angular/common/locales/fr";
 import { ActivatedRoute,Router } from "@angular/router";
 import { Route } from '@angular/compiler/src/core';
-
 @Component({
   selector: "app-manager-product",
   templateUrl: "./manager-product.component.html",
@@ -19,7 +18,6 @@ export class ManagerProductComponent implements OnInit {
     private router: Router
   ) {}
   items: Products[];
-  itemfull: Products[];
   ngOnInit(): void {
     this.service
       .getProduct()
@@ -104,5 +102,11 @@ export class ManagerProductComponent implements OnInit {
     }
   }
   }
- 
+  itemDel: Products;
+  setDeleteId(item) {
+    this.itemDel = item;
+  }
+  delete(pro){
+    this.service.deleteProduct(pro.id).subscribe(data => window.location.reload());
+  }
 }

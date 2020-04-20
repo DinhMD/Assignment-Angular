@@ -13,6 +13,7 @@ import { ProductdetailsComponent } from "./productdetails/productdetails.compone
 import { ContentsComponent } from "./contents/contents.component";
 import { ProductTypeComponent } from './product-type/product-type.component';
 import { SearchComponent } from './search/search.component';
+import { AddproductComponent } from './addproduct/addproduct.component';
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   {
@@ -31,6 +32,7 @@ const routes: Routes = [
     path: "manager",
     component: ProductmanagerComponent,
     children: [
+      { path: "add", component: AddproductComponent},
       { path: "", redirectTo:"product/all", pathMatch: "full"},
       { path: "product", component: ProductmanagerComponent},
       { path: "employ", component: ManagerEmployComponent },

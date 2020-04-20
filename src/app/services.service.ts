@@ -30,9 +30,12 @@ export class ServicesService {
     return this.http.get<Customer[]>(`${this.api}/customer`);
   }
   saveProduct(product): Observable<Products> {
-    return this.http.post<Products>(`${this.api}`, product);
+    return this.http.post<Products>(`${this.api}/products`, product);
   }
   updateProduct(product): Observable<Products> {
-    return this.http.put<Products>(`${this.api}/${product.id}`, product);
+    return this.http.put<Products>(`${this.api}/products/${product.id}`, product);
+  }
+  deleteProduct(id): Observable<Products> {
+    return this.http.delete<Products>(`${this.api}/products/${id}`);  
   }
 }
