@@ -36,7 +36,7 @@ export class ManagerProductComponent implements OnInit {
 
   showItem() {
     this.activate.params.subscribe(param =>
-      param.type === "all"
+      param.type === "all" || param.type == null
         ? (this.items = this.litsItem)
         : (this.items = this.litsItem.filter(
             items => items.type === param.type

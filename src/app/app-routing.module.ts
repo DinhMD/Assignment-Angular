@@ -31,6 +31,8 @@ const routes: Routes = [
     path: "manager",
     component: ProductmanagerComponent,
     children: [
+      { path: "", redirectTo:"product/all", pathMatch: "full"},
+      { path: "product", component: ProductmanagerComponent},
       { path: "employ", component: ManagerEmployComponent },
       { path: "customer", component: ManagerCustomerComponent },
       { path: "product", component: ManagerProductComponent },
