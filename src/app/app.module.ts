@@ -4,6 +4,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Title } from '@angular/platform-browser';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -28,6 +29,7 @@ import { ContentsComponent } from "./contents/contents.component";
 import { ManagerProductDetailComponent } from './manager-product-detail/manager-product-detail.component';
 import { ProductTypeComponent } from './product-type/product-type.component';
 import { SearchComponent } from './search/search.component';
+import { CartComponent } from './cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,9 +52,10 @@ import { SearchComponent } from './search/search.component';
     ContentsComponent,
     ManagerProductDetailComponent,
     ProductTypeComponent,
-    SearchComponent
+    SearchComponent,
+    CartComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgbModule, TextareaAutosizeModule],
   providers: [ServicesService, Title],
   bootstrap: [AppComponent]
 })

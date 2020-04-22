@@ -1,59 +1,108 @@
-
 <div class="signupForm">
-    <article class="card-body mx-auto" style="max-width: 400px;">
-        <h4 class="card-title mt-3 text-center text-white">Create Account</h4>
-        <p class="text-center text-white">Get started with your free account</p>
-        <p>
-            <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login with Twitter</a>
-            <a href="" class="btn btn-block btn-danger"> <i class="fab fa-google"></i>   Login with Google</a>
-            <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login with facebook</a>
-        </p>
-        <p class="text-center">
-            <span class="text-white">OR</span>
-        </p>
-        <form>
-        <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-             </div>
-            <input name="" class="form-control" placeholder="Full name" type="text">
-        </div> <!-- form-group// -->
-        <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-             </div>
-            <input name="" class="form-control" placeholder="Email address" type="email">
-        </div> <!-- form-group// -->
-        <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-            </div>
-            <input name="" class="form-control" placeholder="Phone number" type="text">
-        </div> <!-- form-group// -->
-        <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-            </div>
-            <input class="form-control" placeholder="Create password" type="password">
-        </div> <!-- form-group// -->
-        <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-            </div>
-            <input class="form-control" placeholder="Repeat password" type="password">
-        </div> <!-- form-group// -->  
-        <div>
-            <span class="text-white">Address</span>
-        </div>       
-        <div class="form-group input-group">
-            
-            <textarea rows="3" class="form-control" placeholder="Address"></textarea>
-        </div> <!-- form-group end.// -->                             
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
-            <a class="btn btn-warning btn-block" href="">Back home</a>
-        </div> <!-- form-group// -->      
-        <p class="text-center text-white">Have an account? <a class="text-warning" href="login">Log In</a> </p>                                                                 
+  <article class="card-body mx-auto" style="max-width: 400px;">
+    <h4 class="card-title mt-3 text-center text-white">Create Account</h4>
+    <p class="text-center text-white">Get started with your free account</p>
+    <p>
+      <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login with Twitter</a>
+      <a href="" class="btn btn-block btn-danger"> <i class="fab fa-google"></i>   Login with Google</a>
+      <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login with facebook</a>
+    </p>
+    <p class="text-center">
+      <span class="text-white">OR</span>
+    </p>
+    <form #formSign="ngForm" Validated>
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+        </div>
+        <input name="name" #name="ngModel" class="form-control" ngModel required placeholder="Full name" type="text">
+      </div>
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+        <div *ngIf="name.errors.required">
+          Tên không được để trống
+        </div>
+      </div>
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+        </div>
+        <input name="uname" #uname="ngModel" ngModel required class="form-control" placeholder="Username" type="text">
+        <div *ngIf="uname.invalid && (uname.dirty || uname.touched)" class="alert alert-danger w-100 mb-0 mt-1">
+          <div *ngIf="uname.errors.required" class="mb-0">
+            Tên đăng nhập không được để trống
+          </div>
+        </div>
+      </div> <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+        </div>
+        <input name="email" #email="ngModel" class="form-control" placeholder="Email address" ngModel type="email"
+          required email>
+      </div>
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+        <div *ngIf="email.errors.required">
+          Email không được để trống
+        </div>
+        <div *ngIf="email.errors.email">
+          Email không đúng định dạng
+        </div>
+      </div>
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+        </div>
+        <input name="phone" #phone="ngModel" ngModel class="form-control" placeholder="Phone number" type="text"
+          required>
+      </div>
+      <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger">
+        <div *ngIf="phone.errors.required">
+          Số điện thoại không được để trống
+        </div>
+      </div>
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+        <input name="password" #password="ngModel" ngModel minlength="8" class="form-control"
+          placeholder="Create password" type="password" required>
+      </div>
+      <div *ngIf="password.invalid && (name.dirty || password.touched)" class="alert alert-danger">
+        <div *ngIf="password.errors.required">
+          Mật khẩu không được để trống
+        </div>
+        <div *ngIf="password.errors.minlength">
+          Mật khẩu quá ngắn (ít nhất 8 ký tự)
+        </div>
+      </div>
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+        <input name="repass" #repass="ngModel" ngModel required class="form-control"
+          placeholder="Repeat password" type="password">
+      </div>
+      <div *ngIf="repass.invalid && (repass.dirty || repass.touched)"  class="alert alert-danger">
+        <div *ngIf="repass.errors.required || repass.value != password.value ">
+            Mật khẩu không khớp
+        </div>
+      </div>
+      <!-- form-group// -->
+      <div>
+        <span class="text-white">Address</span>
+      </div>
+      <div class="form-group input-group">
+        <textarea rows="3" class="form-control" placeholder="Address"></textarea>
+      </div> <!-- form-group end.// -->
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block"> Create Account </button>
+        <a class="btn btn-warning btn-block" href="">Back home</a>
+      </div> <!-- form-group// -->
+      <p class="text-center text-white">Have an account? <a class="text-warning" href="login">Log In</a> </p>
     </form>
-    </article>
+  </article>
 </div>

@@ -1,7 +1,8 @@
 <div class="top w-100">
   <h1 class="ml-2">Quản lý sản phẩm</h1>
   <div class="row w-100 ml-1 justify-content-between">
-    <button class="btn btn-outline-danger" data-toggle="modal" data-target="#myModaladd"><i
+    <!-- data-toggle="modal" data-target="#myModaladd" -->
+    <button class="btn btn-outline-danger" routerLink="/manager/add"><i
         class="far fa-plus-square pr-2"></i>Thêm sản phẩm</button>
     <div class="col-4 justify-content-end">
       <input class="h-100 col-9" id="textS" #textsearch type="text" (keyup)="searchPro(textsearch.value, typeSearch.value)" placeholder=" Tìm kiếm..">
@@ -71,6 +72,51 @@
 </div>
 <!-------end Modal------>
 <app-addproduct class="modal fade" id="myModaladd" role="dialog"></app-addproduct>
-<app-manager-product-detail class="modal fade" id="myModaldetail" role="dialog" [data]="product">
-</app-manager-product-detail>
+<div class="modal fade" id="myModaldetail" role="dialog">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+      <form #form="ngForm" (ngSubmit)="saveData()" *ngIf="product">
+          <div class="modal-header">
+              <h4 class="modal-title text-center" style="width: 100%;">{{titleP}}</h4>
+          </div>
+          <div class="modal-body row">
+              <div class="col-6">
+                  <label>ID <span class="notf">{{idwarning}}</span>
+                      <input type="text" id="id2" name="id" value="{{product.id}}" #id class="input-form form-control"
+                          placeholder=" Mã sản phẩm (ID).." disabled>
+                  </label>
+
+                  <label>Loại <select class="input-form" name="type" value="{{product.type}}" id="type2">
+                          <option value="">--Chọn loại--</option>
+                          <option value="DIS">Màn hình</option>
+                          <option value="CHA">Ghế</option>
+                          <option value="KEY">Bàn phím</option>
+                          <option value="HEA">Tai nghe</option>
+                          <option value="MOU">Chuột</option>
+                      </select></label>
+                  <label>Ảnh sản phẩm <span class="notf">{{picwarning}}</span><input id="picture2" name="picture" type="text" #picture2 value="{{product.image}}" (keyup)="setPicture(picture2.value)"
+                          class="input-form" placeholder=" Ảnh sản phẩm..(url)">
+                  </label>
+                  <img src="{{picture2.value}}" alt="" width="300">
+              </div>
+              <div class="col-6">
+                  <label>Tên <span class="notf">{{namewarning}}</span><input id="name2" name="name2" type="text" value="{{product.name}}" class="input-form" placeholder=" Tên sản phẩm.."></label>
+                  <label>Số lượng <input id="count2" name="count" type="number" value="{{product.count}}"  class="input-form" placeholder=" Số lượng"></label>
+                  <label>Giá (VND) <span class="notf">{{pricewarning}}</span>
+                      <input id="price2" min="0"  value="{{product.price}}" name="price" type="number" class="input-form"
+                          placeholder=" Giá..(VND)"></label>
+                  <label>Giảm giá (%)<input id="sale2" name="sale"  type="number" value="{{product.sale}}" class="input-form" min="0" max="100"
+                          placeholder=" Giảm giá..(%)"></label>
+                  <label>Chi tiết<textarea id="desc2" value="{{product.desc}}" name="desc" class="input-form" rows="10"
+                          placeholder=" Mô tả chi tiết.."></textarea></label>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="sudmit" class="btn btn-success">Lưu</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="closeForm()">Đóng</button>
+          </div>
+      </form>
+  </div>
+</div>
+</div>
 

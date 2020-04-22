@@ -32,7 +32,7 @@
               <div *ngFor="let item of product; let i = index " class="carousel-item {{i == 0 ? 'active':''}}">
                 <img class="imagebanner2 float-left" src="{{item.image}}" alt="First slide" />
                 <div class="float-left mt-5 ml-4">
-                  <p class="" routerLink="/home/detail/{{item.id}}">{{item.name}}</p>
+                  <p class="slideName" routerLink="/home/detail/{{item.id}}"><input type="text" value="{{item.name}}"></p>
                   <label class="text-pricebanner">Giá gốc:
                     <span>{{item.price |
                         currency:'VND':'symbol-narrow':'3.0':'fr'}}</span></label>

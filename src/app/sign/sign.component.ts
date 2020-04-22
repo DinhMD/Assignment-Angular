@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-sign',
   templateUrl: './sign.component.html',

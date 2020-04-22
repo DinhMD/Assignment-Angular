@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Order } from "../dataBean";
+import { Order, Customer } from '../dataBean';
 import { ServicesService } from "../services.service";
 import { registerLocaleData } from "@angular/common";
 import localeFr from "@angular/common/locales/fr";
@@ -15,12 +15,17 @@ export class ManagerOderComponent implements OnInit {
     private activate: ActivatedRoute
   ) { }
   orderlist: Order[];
+  customer: Customer[];
   ngOnInit(): void {
-    this.service
-      .getOrder()
-      .subscribe(
-        response => (this.orderlist = response),
-        error => console.log(error)
-      );
+    this.orderlist = [];
+    this.service.getCustomer().subscribe(data => this.getAllOrder(data));
+  }
+  getAllOrder(data) {
+    this.customer = data;
+    console.log(data);
+    for (var i = 0; i < data.length; i++) {
+      this.service.getFullCart(data[i].id).subscribe(data => (this.orderlist =  this.orderlist.concat(data)));
+    }
+    // console.log(this.orderlist);
   }
 }

@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Products } from "../dataBean";
 import { ServicesService } from "../services.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { resolve } from 'dns';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-manager-product-detail',
@@ -12,12 +14,14 @@ import { NgForm } from '@angular/forms';
 export class ManagerProductDetailComponent implements OnInit {
   constructor(
     private service: ServicesService,
-    private active: ActivatedRoute
+    private active: ActivatedRoute,
+    private router: Router
   ) { }
   product: Products;
   @Input('data') set load(value: Products){
     this.product = value;
   };
+  titleP="Thông tin sản phẩm";
   picturelink;
   picwarning;
   idwarning;
@@ -82,6 +86,7 @@ export class ManagerProductDetailComponent implements OnInit {
         image: image.value,
         desc: desc.value
       }
+      this.titleP ="Lưu thành công";
       this.updateProduct(pro);
       this.setNUll();
     }
@@ -106,10 +111,18 @@ export class ManagerProductDetailComponent implements OnInit {
     name.style.border = "solid 1px lightgray";
     name.style.borderBottom = "solid 3px green";
     name.style.boxShadow = "0px 0px 0px red";
+    
   }
   closeForm() {
+    this.titleP = "Thông tin sản phẩm";
   }
-  updateProduct(pro) {
-      this.service.updateProduct(pro).subscribe(data =>  window.location.reload());
+  updatedata(pro) {
+    return new Promise (resolve => {
+      this.service.updateProduct(pro).subscribe(data => resolve(data));
+    })
+  }
+ async updateProduct(pro) {
+    await this.updatedata(pro);
+    window.location.reload();
   }
 }

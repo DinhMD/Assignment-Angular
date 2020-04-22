@@ -1,5 +1,4 @@
 .container {
-  margin-top: 20px;
   label {
     display: block;
   }
@@ -51,7 +50,12 @@
   }
 }
 .desc {
+  height: 100%;
+  display: block;
+  resize: vertical;
+  overflow: auto; 
   width: 100%;
+  box-sizing: border-box;
   background-color: rgba($color: #fff, $alpha: 0);
   border: none;
 }

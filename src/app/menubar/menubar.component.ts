@@ -1,18 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ServicesService } from '../services.service';
 @Component({
   selector: 'app-menubar',
   templateUrl: './menubar.component.html',
   styleUrls: ['./menubar.component.scss']
 })
 export class MenubarComponent implements OnInit {
-
+  btnLoginName = "Đăng nhập";
+  nameuser = "";
+  cartzise = 0;
   constructor(
-    private router: Router
+    private router: Router,
+    private service: ServicesService
   ) { }
 
   ngOnInit(): void {
+    this.btnLoginName = this.service.getInforLogin().btn;
+    this.nameuser = this.service.getInforLogin().name;
+    (document.querySelector(".dropForBtn") as HTMLElement).style.opacity = "0";
+    (document.querySelector(".dropForBtn") as HTMLElement).style.visibility =
+      "hidden";
   }
   showMenu() {
     (document.querySelector(".dropForBtn") as HTMLElement).style.opacity = "1";
@@ -31,5 +40,18 @@ export class MenubarComponent implements OnInit {
       this.router.navigate(["home/search/" + form.value.textSearch]);
     }
 
+  }
+  loginorlogout(){
+    let loginfor = this.service.getInforLogin();
+    if (loginfor.id == 0) {
+      this.router.navigateByUrl("/login");
+    } else {
+      this.service.updateCustomer({login: false});
+      this.btnLoginName = "Đăng nhập";
+      this.nameuser = "";
+      this.cartzise = 0;
+      this.service.setInforLogin(0,"", "Đăng nhập");
+      this.router.navigateByUrl("/home");
+    }
   }
 }

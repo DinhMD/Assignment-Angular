@@ -3,7 +3,7 @@
     <div class="modal-content">
         <form #form="ngForm" (ngSubmit)="saveData()" *ngIf="product">
             <div class="modal-header">
-                <h4 class="modal-title text-center" style="width: 100%;">Thông tin sản phẩm</h4>
+                <h4 class="modal-title text-center" style="width: 100%;">{{titleP}}</h4>
             </div>
             <div class="modal-body row">
                 <div class="col-6">

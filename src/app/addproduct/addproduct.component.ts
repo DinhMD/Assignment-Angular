@@ -1,9 +1,9 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, OnDestroy } from '@angular/core';
 import { ServicesService } from "../services.service";
 import { Products } from '../dataBean';
 import { NgForm } from '@angular/forms';
 import { threadId } from 'worker_threads';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-addproduct',
   templateUrl: './addproduct.component.html',
@@ -123,7 +123,6 @@ export class AddproductComponent implements OnInit {
         image: image.value,
         desc: desc.value
       }
-      console.log(pro);
       this.save = "Lưu thành công";
       this.addProduct(pro);
       this.setNUll();
@@ -170,12 +169,13 @@ export class AddproductComponent implements OnInit {
     this.picturelink = "";
     this.save = "Thêm sản phẩm";
     this.setNUll();
+    this.router.navigateByUrl('/manager');
   }
   addProduct(pro) {
     if (this.add) {
-      this.service.saveProduct(pro).subscribe(data =>  window.location.reload());
+      this.service.saveProduct(pro).subscribe(data =>  this.router.navigateByUrl('/manager'));
     } else {
-      this.service.updateProduct(pro).subscribe(data =>  window.location.reload());
+      this.service.updateProduct(pro).subscribe(data =>  this.router.navigateByUrl('/manager'));
     }
   }
 }

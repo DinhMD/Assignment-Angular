@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Products } from '../dataBean'
+import { Products, Login } from '../dataBean';
 import { ServicesService } from '../services.service';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-productmanager',
@@ -12,9 +13,23 @@ import { Title } from '@angular/platform-browser';
 })
 
 export class ProductmanagerComponent implements OnInit {
-  constructor(private titleService : Title) { }
+  constructor(
+    private titleService : Title,
+    private service: ServicesService,
+    private router: Router
+    ) { }
   ngOnInit(): void {
     this.titleService.setTitle("Gear Shop - Manager Center");
+    this.checkLogin();
+  }
+  // login: Login;
+  checkLogin(){
+      if (this.service.getLogin() == false) {
+        this.router.navigate(["/login"]);
+      }
+  }
+  clearLogin(){
+    this.service.setLogin(false);
   }
   showToggle(){
     (document.querySelector(".homeSubmenu") as HTMLElement).style.height = "0";

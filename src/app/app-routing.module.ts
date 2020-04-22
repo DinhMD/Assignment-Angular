@@ -14,15 +14,17 @@ import { ContentsComponent } from "./contents/contents.component";
 import { ProductTypeComponent } from './product-type/product-type.component';
 import { SearchComponent } from './search/search.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
+import { CartComponent } from './cart/cart.component';
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   {
     path: "home",
     component: MainComponent,
     children: [
+      { path: "cart", component: CartComponent},
       { path: "detail/:id", component: ProductdetailsComponent },
       { path: "", component: ContentsComponent },
-      {path: "search/:text", component: SearchComponent},
+      { path: "search/:text", component: SearchComponent},
       { path: "listproduct/:type", component: ProductTypeComponent }
     ]
   },

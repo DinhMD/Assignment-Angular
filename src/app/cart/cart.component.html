@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="pt-5 w-100">
+    <table class="table table-striped">
+      <thead>
+        <tr class="row w-100">
+          <th class="col-2 text-center">Ảnh</th>
+          <th class="col-4 text-left">Sản phẩm</th>
+          <th class="col-2 text-center">Số lượng</th>
+          <th class="col-3 text-center">Thành tiền</th>
+          <th class="col-1 text-center">Xóa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartPage; let i = index" class="row w-100">
+          <td class="col-2 text-center"><img src="{{item.image}}" height="80px"></td>
+          <td class="col-4 text-left">{{item.name}}</td>
+          <td class="col-2 text-center">
+            <div class="btn-group">
+              <label class="label-count">
+                <input type="number" max="10" min="1" value="{{item.count}}" disabled>
+              </label>
+            </div>
+          </td>
+          <td class="col-3 text-center">{{(item.price - item.price*(item.sale/100))*item.count|
+                currency:'VND':'symbol-narrow':'3.0':'fr'}}</td>
+          <td class="col-1 text-center"><a data-toggle="modal" data-target="#delDialog" (click)="show(item)" class="btnDel"><i class="fas fa-trash-alt"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination [collectionSize]="maxpage" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"
+        (pageChange)="showPage()"></ngb-pagination>
+        <button class="btn btn-danger px-5 py-0" disabled>Lưu</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="delDialog" tabindex="-1" role="dialog" aria-labelledby="delDialog" aria-hidden="true" *ngIf="itemDel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title text-center" >Thông báo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>Bạn có chắc muốn xóa sản phẩm này không?</p>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="delete(itemDel)">Có</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Không</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-------end Modal------>

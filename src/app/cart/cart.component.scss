@@ -1,0 +1,24 @@
+.container {min-height: 500px;}
+.btnDel{
+    cursor: pointer;
+}
+.btnDel:hover{
+    color: orangered;
+}
+  .label-count {
+    input {
+      font-size: 1.2rem;
+      font-weight: bold;
+      float: left;
+      width: 65px;
+      height: 40px;
+      margin: 0px 10px 0px 10px;
+      padding-left: 10px;
+      text-align: center;
+    }
+    // input::-webkit-outer-spin-button,
+    // input::-webkit-inner-spin-button {
+    //   -webkit-appearance: none;
+    //   margin: 0;
+    // }
+  }

@@ -1,33 +1,34 @@
 <h1>Quản lý đơn hàng</h1>
 <div class="tbl-header">
-    <table cellpadding="0" cellspacing="0" border="0">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Khách hàng</th>
-                <th>Sản phẩm</th>
-                <th>Tổng tiền</th>
-                <th>Ngày</th>
-                <th>Chi tiết</th>
-                <th>Xóa</th>
-            </tr>
-        </thead>
-    </table>
+  <table cellpadding="0" cellspacing="0" border="0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Ảnh</th>
+        <th>Sản phẩm</th>
+        <th>Tổng tiền</th>
+        <th>Số lượng</th>
+        <th>Chi tiết</th>
+        <th>Xóa</th>
+      </tr>
+    </thead>
+  </table>
 </div>
 <div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="0">
-        <tbody>
-            <tr *ngFor="let item of orderlist">
-                <td class="firstTD">{{item.id}}</td>
-                <td>{{item.customer}}</td>
-                <td>
-                    <span *ngFor="let sp of item.items">-{{sp.name}}<br /></span>
-                </td>
-                <td>{{item.price}}</td>
-                <td>{{item.date | date:'mediumDate' }}</td>
-                <td><a>Chi tiết</a></td>
-                <td><a>Xóa</a></td>
-            </tr>
-        </tbody>
-    </table>
+  <table cellpadding="0" cellspacing="0" border="0">
+    <tbody>
+      <tr *ngFor="let item of orderlist">
+        <td class="firstTD">{{item.CustomerId}}</td>
+        <td  class="text-center"><img src="{{item.image}}" alt="" height="50"></td>
+        <td>
+          {{item.name}}
+        </td>
+        <td class="text-center">{{(item.price - item.price*(item.sale/100))*item.count |
+                    currency:'VND':'symbol-narrow':'3.0':'fr'}}</td>
+        <td class="text-center">{{item.count}}</td>
+        <td><a>Chi tiết</a></td>
+        <td><a>Xóa</a></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

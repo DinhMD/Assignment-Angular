@@ -11,15 +11,18 @@ export class Products {
   }
   export class Order {
     id: number;
-    customer: String;
-    items: Products[];
+    customerId: number;
+    name: String;
+    count: number;
     price: number;
-    date: String;
+    image: String; 
+    itemId: number;
+    status: String;
   }
   export class Employ {
     id: number;
     name: String;
-    usename: String;
+    username: String;
     password: number;
   }
   export class Customer {
@@ -30,5 +33,10 @@ export class Products {
     phone: String;
     email: String;
     address: String;
-    order: products[];
+    order: Products[];
+    login: boolean;
+  }
+  export class Login {
+    id:String;
+    login:boolean;
   }
