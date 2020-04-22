@@ -33,8 +33,6 @@ export class Products {
     phone: String;
     email: String;
     address: String;
-    order: Products[];
-    login: boolean;
   }
   export class Login {
     id:String;

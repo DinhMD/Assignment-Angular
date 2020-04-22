@@ -51,11 +51,11 @@
   <aside class="col-3 payCart">
     <div class="h-100 bg-light border-darken-1 contentPay p-2">
       <label class="d-block text-center bg-danger py-3 w-100">
-        <h4>Mai Đình Dinh</h4>
+        <h4>{{customer.name}}</h4>
       </label>
-      <label class="d-block">Điện thoại: 0982409446</label>
-      <label class="d-block">Email: dinhmdph07327@fpt.edu.vn</label>
-      <label class="d-block">Địa chỉ: Nhà 9C, ngõ 85, Xuân Thủy, Cầu Giấy, Hà Nội</label>
+      <label class="d-block">Điện thoại: {{customer.phone}}</label>
+      <label class="d-block">Email: {{customer.email}}</label>
+      <label class="d-block">Địa chỉ: {{customer.address}}</label>
       <label class="d-block font-weight-bold">Đơn hàng</label>
       <div class="table-wrapper-scroll-y my-custom-scrollbar">
         <table class="tablePay w-80">

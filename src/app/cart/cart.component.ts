@@ -6,7 +6,6 @@ import { resolve } from 'dns';
 import { async } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { products } from '../../../../dinhmdph07327-pt14302-angular/src/app/dataimp';
 import { privateEncrypt } from 'crypto';
 
 @Component({
@@ -41,6 +40,7 @@ export class CartComponent implements OnInit {
   cartPage: Order[];
   itemDel: Products;
   closeResult: string;
+  customer: Customer;
   ngOnInit(): void {
     if (this.service.getInforLogin().id == 0) {
       this.router.navigateByUrl("/login");
@@ -80,6 +80,7 @@ export class CartComponent implements OnInit {
   setData(item) {
     this.cartlist = item;
     this.cartPage = this.cartlist;
+    this.service.getCustomerID().subscribe(data => this.customer = data);
     this.showPage();
   }
   sum = 0;
