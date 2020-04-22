@@ -69,6 +69,9 @@ export class ServicesService {
   getFullCart(id): Observable<Order[]> {
     return this.http.get<Order[]>(`${this.api}/customer/${id}/order`);
   }
+  getFullCartActive(id): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.api}/customer/${id}/order?filter=true`);
+  }
   logId = 0;
   logName = "";
   btnlogin = "Đăng nhập";

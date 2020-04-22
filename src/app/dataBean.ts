@@ -17,7 +17,7 @@ export class Products {
     price: number;
     image: String; 
     itemId: number;
-    status: String;
+    status: boolean;
   }
   export class Employ {
     id: number;

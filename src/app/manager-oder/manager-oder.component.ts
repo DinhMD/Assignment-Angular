@@ -22,10 +22,8 @@ export class ManagerOderComponent implements OnInit {
   }
   getAllOrder(data) {
     this.customer = data;
-    console.log(data);
     for (var i = 0; i < data.length; i++) {
-      this.service.getFullCart(data[i].id).subscribe(data => (this.orderlist =  this.orderlist.concat(data)));
+      this.service.getFullCartActive(data[i].id).subscribe(data => (this.orderlist =  this.orderlist.concat(data)));
     }
-    // console.log(this.orderlist);
   }
 }

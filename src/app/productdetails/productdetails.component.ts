@@ -52,13 +52,10 @@ export class ProductdetailsComponent implements OnInit {
     }
   }
   getcart() {
-      this.service.getCart().subscribe(data => this.commitcart(data));
+    this.service.getCart().subscribe(data => this.commitcart(data));
   }
-commitcart(cart) {
-    console.log(cart);
-    let check = cart.find(item => item.itemId == this.produc.id);
-    console.log(check);
-    console.log(this.produc.id);
+  commitcart(cart) {
+    let check = cart.find(item => item.itemId == this.produc.id && item.status == false);
     if (check == null) {
       let item = {
         count: parseInt((document.querySelector("#input-count") as HTMLInputElement).value),
@@ -66,40 +63,47 @@ commitcart(cart) {
         price: this.produc.price,
         sale: this.produc.sale,
         image: this.produc.image,
-        itemId:this.produc.id,
+        itemId: this.produc.id,
+        status: false
       }
       this.service.addcart(item).subscribe(data => alert("Thêm thành công!"));
     } else {
+      let totals = check.count + parseInt((document.querySelector("#input-count") as HTMLInputElement).value);
+      if (totals > this.produc.count) {
+        totals = this.produc.count;
+      }
       let item = {
         id: check.id,
-        count: check.count + parseInt((document.querySelector("#input-count") as HTMLInputElement).value)
+        count: totals,
+        status: false
       }
       this.service.updateCart(item).subscribe(data => alert("Thêm thành công!"));
     }
-    
-    
-  }
-  insertCart() {
-    if (this.service.getInforLogin().id == 0) {
-      this.router.navigateByUrl("/login");
-    } else {
-      this.getcart();
-    }
 
+
+
+}
+insertCart() {
+  if (this.service.getInforLogin().id == 0) {
+    this.router.navigateByUrl("/login");
+  } else {
+    this.getcart();
   }
-  setCount(action) {
-    let max = parseInt((document.querySelector("#input-count") as HTMLInputElement).max);
-    let inp = (document.querySelector("#input-count") as HTMLInputElement);
-    let index = parseInt(inp.value);
-    if (action == "+") {
-      if (index < max) {
-        index++;
-      }
-    } else {
-      if (index > 1) {
-        index--;
-      }
+
+}
+setCount(action) {
+  let max = parseInt((document.querySelector("#input-count") as HTMLInputElement).max);
+  let inp = (document.querySelector("#input-count") as HTMLInputElement);
+  let index = parseInt(inp.value);
+  if (action == "+") {
+    if (index < max) {
+      index++;
     }
-    inp.value = "" + index;
+  } else {
+    if (index > 1) {
+      index--;
+    }
   }
+  inp.value = "" + index;
+}
 }

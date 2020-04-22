@@ -1,58 +1,114 @@
-<div class="container">
-  <div class="pt-5 w-100">
-    <table class="table table-striped">
-      <thead>
-        <tr class="row w-100">
-          <th class="col-2 text-center">Ảnh</th>
-          <th class="col-4 text-left">Sản phẩm</th>
-          <th class="col-2 text-center">Số lượng</th>
-          <th class="col-3 text-center">Thành tiền</th>
-          <th class="col-1 text-center">Xóa</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of cartPage; let i = index" class="row w-100">
-          <td class="col-2 text-center"><img src="{{item.image}}" height="80px"></td>
-          <td class="col-4 text-left">{{item.name}}</td>
-          <td class="col-2 text-center">
-            <div class="btn-group">
+<div class="mainCart justify-content-end row  w-100 pt-5">
+  <article class="col-8">
+    <div class="">
+      <table class="table table-striped">
+        <thead>
+          <tr class="row w-100">
+            <th></th>
+            <th class="col text-center">Ảnh</th>
+            <th class="col text-left">Sản phẩm</th>
+            <th class="col text-center">Số lượng</th>
+            <th class="col text-center">Thành tiền</th>
+            <th class="col text-center">Trang thái</th>
+            <th class="col text-center">Xóa</th>
+          </tr>
+        </thead>
+        <tbody id="tableCart">
+          <tr *ngFor="let item of cartPage; let i = index" class="row w-100">
+            <td>
+              <input (change)="addPay()" type="checkbox" class="checkCart" *ngIf="item.status == false">
+              <input type="checkbox" class="checkCart" *ngIf="item.status == true" disabled>
+              <input type="hidden" value="{{item.itemId}}">
+              <input type="hidden" value="{{item.id}}">
+            </td>
+            <td class="col text-center"><img routerLink="/home/detail/{{item.itemId}}" style="cursor: pointer;"
+                src="{{item.image}}" height="80px"></td>
+            <td class="col text-left" routerLink="/home/detail/{{item.itemId}}" style="cursor: pointer;">{{item.name}}</td>
+            <td class="col text-center">
               <label class="label-count">
                 <input type="number" max="10" min="1" value="{{item.count}}" disabled>
               </label>
-            </div>
-          </td>
-          <td class="col-3 text-center">{{(item.price - item.price*(item.sale/100))*item.count|
-                currency:'VND':'symbol-narrow':'3.0':'fr'}}</td>
-          <td class="col-1 text-center"><a data-toggle="modal" data-target="#delDialog" (click)="show(item)" class="btnDel"><i class="fas fa-trash-alt"></i></a></td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="d-flex justify-content-between p-2">
-      <ngb-pagination [collectionSize]="maxpage" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"
-        (pageChange)="showPage()"></ngb-pagination>
-        <button class="btn btn-danger px-5 py-0" disabled>Lưu</button>
+            </td>
+            <td class="col text-center">
+              <input type="hidden" value="{{(item.price - item.price*(item.sale/100))*item.count}}">
+              {{(item.price - item.price*(item.sale/100))*item.count|
+                currency:'VND':'symbol-narrow':'3.0':'fr'}}
+              </td>
+            <td class="col text-center {{item.status? 'text-success':'text-danger'}}">
+              {{item.status? 'Đã thanh toán':'Chưa thanh toán'}}</td>
+            <td class="col text-center"><a data-toggle="modal" data-target="#delDialog" (click)="show(item)"
+                class="btnDel"><i class="fas fa-trash-alt"></i></a></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-between p-3">
+        <ngb-pagination [collectionSize]="maxpage" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"
+          (pageChange)="showPage()"></ngb-pagination>
+      </div>
     </div>
-  </div>
-</div>
+  </article>
 
+  <aside class="col-3 payCart">
+    <div class="h-100 bg-light border-darken-1 contentPay p-2">
+      <label class="d-block text-center bg-danger py-3 w-100">
+        <h4>Mai Đình Dinh</h4>
+      </label>
+      <label class="d-block">Điện thoại: 0982409446</label>
+      <label class="d-block">Email: dinhmdph07327@fpt.edu.vn</label>
+      <label class="d-block">Địa chỉ: Nhà 9C, ngõ 85, Xuân Thủy, Cầu Giấy, Hà Nội</label>
+      <label class="d-block font-weight-bold">Đơn hàng</label>
+      <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="tablePay w-80">
+          <tr class="row" *ngFor="let item of pay">
+            <td class="col-5 text-left">{{item.name}}</td>
+            <td class="col-3 text-center">Số lượng: {{item.count}}</td>
+            <td class="col-4 text-right">{{item.price |
+              currency:'VND':'symbol-narrow':'3.0':'fr'}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="footerPay bg-light pl-3 row justify-content-around w-100">
+      <label class="col"><strong>Tổng tiền: </strong></label>
+      <label class="col text-danger text-right font-weight-bold">{{sum |
+        currency:'VND':'symbol-narrow':'3.0':'fr'}}</label>
+    </div>
+    <button (click)="payCart(content)" class="btn btn-danger w-100 py-3">Thanh toán</button>
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img class="d-inline" src="https://i.imgur.com/zJYtouJ.png" alt="" height="50"><h4 class="d-inline pl-3">Thanh toán thành công!</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="modal.close('Close click')">Đóng</button>
+      </div>
+    </ng-template>
+  </aside>
+</div>
 <!-- Modal -->
-<div class="modal fade" id="delDialog" tabindex="-1" role="dialog" aria-labelledby="delDialog" aria-hidden="true" *ngIf="itemDel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title text-center" >Thông báo</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <p>Bạn có chắc muốn xóa sản phẩm này không?</p>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="delete(itemDel)">Có</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Không</button>
-        </div>
+<div class="modal fade" id="delDialog" tabindex="-1" role="dialog" aria-labelledby="delDialog" aria-hidden="true"
+  *ngIf="itemDel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center">Thông báo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có chắc muốn xóa đơn hàng này không?</p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="delete(itemDel)">Có</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Không</button>
       </div>
     </div>
   </div>
+
   <!-------end Modal------>
+ 

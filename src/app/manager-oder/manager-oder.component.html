@@ -4,12 +4,10 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Ảnh</th>
+        <th class="text-center">Ảnh</th>
         <th>Sản phẩm</th>
         <th>Tổng tiền</th>
-        <th>Số lượng</th>
-        <th>Chi tiết</th>
-        <th>Xóa</th>
+        <th class="text-center">Số lượng</th>
       </tr>
     </thead>
   </table>
@@ -18,16 +16,14 @@
   <table cellpadding="0" cellspacing="0" border="0">
     <tbody>
       <tr *ngFor="let item of orderlist">
-        <td class="firstTD">{{item.CustomerId}}</td>
+        <td class="firstTD">{{item.customerId}}</td>
         <td  class="text-center"><img src="{{item.image}}" alt="" height="50"></td>
         <td>
           {{item.name}}
         </td>
-        <td class="text-center">{{(item.price - item.price*(item.sale/100))*item.count |
+        <td class="text-left">{{(item.price - item.price*(item.sale/100))*item.count |
                     currency:'VND':'symbol-narrow':'3.0':'fr'}}</td>
         <td class="text-center">{{item.count}}</td>
-        <td><a>Chi tiết</a></td>
-        <td><a>Xóa</a></td>
       </tr>
     </tbody>
   </table>
