@@ -24,6 +24,12 @@ export class ServicesService {
   getEmploy(): Observable<Employ[]> {
     return this.http.get<Employ[]>(`${this.api}/employ`);
   }
+  insertEmploy(employ) {
+    return this.http.post<Customer>(`${this.api}/employ`, employ);
+  }
+  deleteEmploy(id) {
+    return this.http.delete<Customer>(`${this.api}/employ/${id}`);
+  }
   getCustomer(): Observable<Customer[]> {
     return this.http.get<Customer[]>(`${this.api}/customer`);
   }

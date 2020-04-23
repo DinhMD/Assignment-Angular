@@ -84,7 +84,7 @@
         <input name="password" #password="ngModel" ngModel minlength="8" class="form-control"
           placeholder="Create password" type="password" required>
       </div>
-      <div *ngIf="password.invalid && (name.dirty || password.touched)" class="alert alert-danger">
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
         <div *ngIf="password.errors.required">
           Mật khẩu không được để trống
         </div>

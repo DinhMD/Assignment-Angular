@@ -1,29 +1,134 @@
 <div class="top">
-    <h1>Nhân viên</h1>
-    <button class="btn btn-outline-primary"><i class="far fa-plus-square pr-2"></i>Thêm nhân viên</button>
+  <h1>Nhân viên</h1>
+  <button class="btn btn-outline-primary" (click)="openVerticallyCentered(contentEmploy)"><i
+      class="far fa-plus-square pr-2"></i>Thêm nhân viên</button>
 </div>
 
+<!---Begin Modal--->
+<ng-template #contentEmploy let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Thêm nhân viên</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #formEm="ngForm" (ngSubmit)="getEmploy(formEm)">
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+        </div>
+        <input name="name2" #name2="ngModel" class="form-control" ngModel required placeholder="Full name" type="text">
+      </div>
+      <div *ngIf="name2.invalid && (name2.dirty || name2.touched)" class="alert alert-danger">
+        <div *ngIf="name2.errors.required">
+          Tên không được để trống
+        </div>
+      </div>
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+        </div>
+        <input name="username2" #username2="ngModel" ngModel required class="form-control" placeholder="Username"
+          type="text">
+        <div *ngIf="username2.invalid && (username2.dirty || username2.touched)"
+          class="alert alert-danger w-100 mb-0 mt-1">
+          <div *ngIf="username2.errors.required" class="mb-0">
+            Tên đăng nhập không được để trống
+          </div>
+        </div>
+      </div> <!-- form-group// -->
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+        <input name="password2" #password2="ngModel" ngModel minlength="5" class="form-control"
+          placeholder="Create password" type="password" required>
+      </div>
+      <div *ngIf="password2.invalid && (password2.dirty || password2.touched)" class="alert alert-danger">
+        <div *ngIf="password2.errors.required">
+          Mật khẩu không được để trống
+        </div>
+        <div *ngIf="password2.errors.minlength">
+          Mật khẩu quá ngắn (ít nhất 5 ký tự)
+        </div>
+      </div>
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+        <input name="repass2" #repass2="ngModel" ngModel required (keyup)="checkPass(password2.value, repass2.value)"
+          class="form-control" placeholder="Repeat password" type="password">
+      </div>
+      <div *ngIf="checkp2 == false" class="alert alert-danger">
+        <div>
+          Mật khẩu không khớp
+        </div>
+      </div>
+      <!-- form-group// -->
+      <div class="modal-footer justify-content-around">
+        <button class="btn btn-primary px-4" type="submit">Thêm</button>
+        <button type="button" class="btn btn-success" (click)="modal.close('Close click')">Đóng</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+<!------End Modal-->
+
+<!---Begin Modal Delete--->
+<ng-template #delEmploy let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title2">Vui lòng nhập mật khẩu tài khoản này để xóa</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #formdel="ngForm" (ngSubmit)="deleteEmply(formdel)">
+      <div class="form-group input-group">
+        <!-- form-group// -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
+          <input name="password3" #password3="ngModel" ngModel class="form-control" placeholder="Create password"
+            type="password">
+        </div>
+        <!-- form-group// -->
+        <div class="modal-footer justify-content-around">
+          <button class="btn btn-primary px-4" type="submit">xóa</button>
+          <button type="button" class="btn btn-success" (click)="modal.close('Close click')">Đóng</button>
+        </div>
+      </div>
+    </form>
+    </div>
+</ng-template>
+<!------End Modal-->
+
 <div class="tbl-header">
-    <table cellpadding="0" cellspacing="0" border="0">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Tên nhân viên</th>
-                <th>Tài khoản</th>
-                <th>Sửa</th>
-            </tr>
-        </thead>
-    </table>
+  <table cellpadding="0" cellspacing="0" border="0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tên nhân viên</th>
+        <th>Tài khoản</th>
+        <th>Xóa</th>
+      </tr>
+    </thead>
+  </table>
 </div>
 <div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="0">
-        <tbody>
-            <tr *ngFor=" let item of employ">
-                <td>{{item.id}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.username}}</td>
-                <td><span class="ptxt">Sửa</span></td>
-            </tr>
-        </tbody>
-    </table>
+  <table cellpadding="0" cellspacing="0" border="0">
+    <tbody>
+      <tr *ngFor=" let item of employ">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.username}}</td>
+        <td><a class="ptxt" (click)="openDelForm(delEmploy, item.password, item.id)">Xóa</a></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
