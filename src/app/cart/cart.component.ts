@@ -5,9 +5,61 @@ import { Router, NavigationEnd } from '@angular/router';
 import { resolve } from 'dns';
 import { async } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { privateEncrypt } from 'crypto';
+import { NgbActiveModal, NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
+@Component({
+  selector: 'ngbd-modal-content',
+  styles: [`
+    .dark-modal .modal-content {
+      background-color: rgba(#292b2c, 0);
+    }
+  `],
+  template: `
+  <button class="btn btn-danger w-100">
+      <span class="spinner-border spinner-border-sm"></span>
+      Đang thanh toán..
+  </button>
+  `
+})
+export class modalPay {
+  constructor(public activeModal: NgbActiveModal) { }
+}
+
+@Component({
+  selector: 'ngbd-modal-content',
+  styles: [`
+    .dark-modal .modal-content {
+      background-color: rgba(#292b2c, 0);
+    }
+  `],
+  template: `
+  <button class="btn btn-danger w-100">
+      <span class="spinner-border spinner-border-sm"></span>
+      Đang xóa..
+  </button>
+  `
+})
+export class modalDel {
+  constructor(public activeModal: NgbActiveModal) { }
+}
+
+@Component({
+  selector: 'ngbd-modal-content',
+  styles: [`
+    .dark-modal .modal-content {
+      background-color: rgba(#292b2c, 0);
+    }
+  `],
+  template: `
+  <button class="btn btn-primary w-100">
+      <span class="spinner-border spinner-border-sm"></span>
+      Vui lòng đợi lấy dữ liệu..
+  </button>
+  `
+})
+export class NgbdModalContent {
+  constructor(public activeModal: NgbActiveModal) { }
+}
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -31,8 +83,12 @@ export class CartComponent implements OnInit {
     private service: ServicesService,
     private router: Router,
     private title: Title,
-    private modalService: NgbModal
-  ) { }
+    private modalService: NgbModal,
+    private config: NgbModalConfig
+  ) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
   page = 1;
   pageSize = 4;
   maxpage = 0;
@@ -40,34 +96,55 @@ export class CartComponent implements OnInit {
   cartPage: Order[];
   itemDel: Products;
   closeResult: string;
-  customer: Customer;
+  customer = new Customer;
+  nofCart;
   ngOnInit(): void {
     if (this.service.getInforLogin().id == 0) {
       this.router.navigateByUrl("/login");
+    } else {
+      this.openVerticallyCentered(NgbdModalContent);
+      this.title.setTitle("Giỏ hàng");
+      this.calldata();
     }
-    this.title.setTitle("Giỏ hàng");
-    this.calldata();
+
+  }
+  calldata() {
+    this.service.getCart().subscribe(responese => this.setData(responese));
+  }
+  setData(item) {
+    this.cartlist = item;
+    this.cartPage = this.cartlist;
+    this.service.getCustomerID().subscribe(data => this.successData(data));
+
+  }
+  successData(data) {
+    this.customer = data;
+    this.config.keyboard = true;
+    this.showPage();
   }
   openVerticallyCentered(content) {
-    this.modalService.open(content, { centered: true });
+    this.modalService.open(content, { centered: false, size: 'sm' });
+  }
+  dimissModal(){
+    this.modalService.dismissAll();
   }
   show(item) {
     this.itemDel = item;
+    this.pay = [];
   }
   updatecart(item) {
     return new Promise(resolve => {
       this.service.deleteCart(item.id).subscribe(data => resolve(data));
     })
   }
-  calldata() {
-    this.service.getCart().subscribe(responese => this.setData(responese));
-  }
   async delete(product) {
+    this.openVerticallyCentered(modalDel);
     await this.updatecart(product);
     this.calldata();
     this.showPage();
   }
   showPage() {
+    this.modalService.dismissAll();
     this.maxpage = Math.ceil(this.cartlist.length / 6) * 10;
     let index = 0;
     if (this.cartlist.length > 6) {
@@ -76,12 +153,6 @@ export class CartComponent implements OnInit {
       }
     }
     this.cartPage = this.cartlist.slice(index, index + 6);
-  }
-  setData(item) {
-    this.cartlist = item;
-    this.cartPage = this.cartlist;
-    this.service.getCustomerID().subscribe(data => this.customer = data);
-    this.showPage();
   }
   sum = 0;
   pay = [];
@@ -114,8 +185,6 @@ export class CartComponent implements OnInit {
   }
   updateProduct(item, pro) {
     return new Promise(resolve => {
-      // this.service.getProductById(item.id).subscribe(data => console.log(data));
-      // console.log(product);
       let newCount = {
         id: item.id,
         type: pro.type,
@@ -126,10 +195,8 @@ export class CartComponent implements OnInit {
         image: pro.image,
         desc: pro.desc
       }
-      // pro.count - item.count;
       console.log(pro);
       console.log(pro.count - item.count + "--" + pro.count + "--" + item.count);
-      // console.log(newCount);
       this.service.updateProduct(newCount).subscribe(data => resolve(data));
     })
   }
@@ -137,15 +204,17 @@ export class CartComponent implements OnInit {
     if (this.pay.length == 0) {
       alert("Vui lòng chọn mặt hàng trong giỏ hàng để thực hiện thanh toán!")
     } else {
+      this.openVerticallyCentered(modalPay);
       for (let index = 0; index < this.pay.length; index++) {
         let item = { id: this.pay[index].itemId, count: this.pay[index].count };
         await this.activeCart({ id: this.pay[index].id, status: true });
         console.log(item.id);
         var product = await this.getproduct(item.id);
         console.log(await this.updateProduct(item, product));
-
+        setTimeout(() => {
+          this.openVerticallyCentered(content);
+        },1000);
       }
-      this.openVerticallyCentered(content);
       this.calldata();
       this.pay = [];
       this.sum = 0;

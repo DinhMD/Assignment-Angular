@@ -1,6 +1,14 @@
 
 <div class="bglogin">
 <div class="container">
+	  <!---Begin Modal-->
+	  <ng-template #noflogin let-modal>
+		<button class="btn btn-primary w-100">
+		  <span class="spinner-border spinner-border-sm"></span>
+		  Đang đăng nhập..
+	  </button>
+	  </ng-template>
+	  <!---End Modal--->
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">
@@ -12,7 +20,7 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<form #formLogin="ngForm" (ngSubmit)="checkLogin(formLogin)">
+				<form #formLogin="ngForm" (ngSubmit)="callData(formLogin,noflogin)">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
