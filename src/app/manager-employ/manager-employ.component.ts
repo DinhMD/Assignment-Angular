@@ -1,8 +1,76 @@
 import { Component, OnInit } from '@angular/core';
 import { Employ } from '../dataBean';
 import { ServicesService } from '../services.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { resolve } from 'dns';
+import { NgbActiveModal, NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+@Component({
+  selector: 'ngbd-modal-content',
+  styles: [`
+    .dark-modal .modal-content {
+      background-color: rgba(#292b2c, 0);
+    }
+  `],
+  template: `
+  <button class="btn btn-warning w-100">
+      <span class="spinner-border spinner-border-sm"></span>
+      Vui lòng đợi lấy dữ liệu..
+  </button>
+  `
+})
+export class modalLoadEmploy {
+  constructor(
+    public activeModal: NgbActiveModal,
+    private config: NgbModalConfig
+  ) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
+}
+@Component({
+  selector: 'ngbd-modal-content',
+  styles: [`
+    .dark-modal .modal-content {
+      background-color: rgba(#292b2c, 0);
+    }
+  `],
+  template: `
+  <button class="btn btn-danger w-100">
+      <span class="spinner-border spinner-border-sm"></span>
+      Đang xóa..
+  </button>
+  `
+})
+export class modalDelEmploy {
+  constructor(
+    public activeModal: NgbActiveModal,
+    private config: NgbModalConfig
+  ) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
+}
+@Component({
+  selector: 'ngbd-modal-content',
+  styles: [`
+    .dark-modal .modal-content {
+      background-color: rgba(#292b2c, 0);
+    }
+  `],
+  template: `
+  <button class="btn btn-primary w-100">
+      <span class="spinner-border spinner-border-sm"></span>
+      Đang thêm..
+  </button>
+  `
+})
+export class modalAddEmploy {
+  constructor(
+    public activeModal: NgbActiveModal,
+    private config: NgbModalConfig
+  ) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
+}
 @Component({
   selector: 'app-manager-employ',
   templateUrl: './manager-employ.component.html',
@@ -32,7 +100,15 @@ export class ManagerEmployComponent implements OnInit {
     this.calldata();
   }
   calldata() {
-    this.service.getEmploy().subscribe(response => (this.employ = response), errors => console.log(errors));
+    this.openModalTop(modalLoadEmploy);
+    this.service.getEmploy().subscribe(response => this.dimissModal(response));
+  }
+  dimissModal(data){
+    this.employ = data;
+    this.modalService.dismissAll();
+  }
+  openModalTop(content) {
+    this.modalService.open(content, { centered: false, size: 'true' });
   }
   openVerticallyCentered(content) {
     this.modalService.open(content, { centered: true });
@@ -54,8 +130,8 @@ export class ManagerEmployComponent implements OnInit {
     if (em != null) {
       alert("Tài khoản này đã được dùng!");
     } else {
+      this.openModalTop(modalAddEmploy);
       await this.addEmploy({ name: f.value.name2, username: f.value.username2, password: f.value.password2 })
-      alert("Thêm tài khoản thành công!");
       this.modalService.dismissAll();
       this.calldata();
     }
@@ -84,9 +160,8 @@ export class ManagerEmployComponent implements OnInit {
     if (f.value.password3 != this.pass) {
       alert("Bạn đã nhập sai mật khẩu!")
     } else {
-      console.log(this.id);
+      this.openModalTop(modalDelEmploy);
       await this.delEmploy(this.id);
-      alert("Xóa thành công!")
       this.modalService.dismissAll();
       this.calldata();
     }

@@ -22,7 +22,6 @@ export class ProductmanagerComponent implements OnInit {
     this.titleService.setTitle("Gear Shop - Manager Center");
     this.checkLogin();
   }
-  // login: Login;
   checkLogin(){
       if (this.service.getLogin() == false) {
         this.router.navigate(["/login"]);

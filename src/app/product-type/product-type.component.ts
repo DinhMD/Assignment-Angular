@@ -3,6 +3,24 @@ import { Products } from '../dataBean';
 import { ServicesService } from '../services.service';
 import { ActivatedRoute } from "@angular/router";
 import { Title } from '@angular/platform-browser';
+import { NgbActiveModal, NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+@Component({
+  selector: 'ngbd-modal-content',
+  styles: [`
+    .dark-modal .modal-content {
+      background-color: rgba(#292b2c, 0);
+    }
+  `],
+  template: `
+  <button class="btn btn-warning w-100">
+      <span class="spinner-border spinner-border-sm"></span>
+      Vui lòng đợi lấy dữ liệu..
+  </button>
+  `
+})
+export class modalLoadType {
+  constructor(public activeModal: NgbActiveModal) { }
+}
 @Component({
   selector: 'app-product-type',
   templateUrl: './product-type.component.html',
@@ -13,8 +31,13 @@ export class ProductTypeComponent implements OnInit {
   constructor(
     private service: ServicesService,
     private active: ActivatedRoute,
-    private titleService: Title
-  ) { }
+    private titleService: Title,
+    private modalService: NgbModal,
+    private config: NgbModalConfig
+  ) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
   listItem: Products[];
   listPage: Products[];
   typeParam;
@@ -29,6 +52,9 @@ export class ProductTypeComponent implements OnInit {
     this.page = 1;
     this.active.params.subscribe(param => this.setProductType(param.type));
   }
+  openVerticallyCentered(content) {
+    this.modalService.open(content, { size: 'sm' });
+  }
   showPage() {
     let index = 0;
     if (this.listItem.length > 12) {
@@ -39,6 +65,7 @@ export class ProductTypeComponent implements OnInit {
     this.listPage = this.listItem.slice(index, index + 12);
   }
   setProductType(type) {
+    this.openVerticallyCentered(modalLoadType);
     this.typeParam = type;
     switch (type) {
       case "DIS": { this.typeName = "Màn hình"; this.typeDesc = "Màn hình chính hãng chất lượng tuyệt đối, hỗ trợ trả góp 0%";; break; }
@@ -55,6 +82,7 @@ export class ProductTypeComponent implements OnInit {
     this.listItem = this.fullType;
     this.listPage = this.listItem.slice(0, 12);
     this.maxpage = Math.ceil(this.listItem.length / 12) * 10;
+    this.modalService.dismissAll();
   }
   searchName(text) {
     if (text != "") {

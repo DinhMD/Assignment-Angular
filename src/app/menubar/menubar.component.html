@@ -1,59 +1,59 @@
 <nav class="sticky-top navbar navbar-expand-lg navbar-light">
-    <a class="homename navbar-brand" routerLink="/home">
-        <img src="https://i.imgur.com/ekGn84w.png" alt="Null image" width="auto" height="25" />
-        <img src="https://i.imgur.com/fkW5J7J.png" alt="Null image" width="auto" height="30" />
-    </a>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <ul class="menu" (mouseleave)="hideMenu()">
-                    <a routerLink="" class="btnDrop" (mouseenter)="showMenu()" >Danh mục</a>
-                    <li>
-                        <ul class="dropForBtn">
-                            <li>
-                                <a routerLink="/home/listproduct/DIS" (click)="hideMenu()"><i class="fas fa-tv pr-2"></i>Màn hình</a>
-                            </li>
-                            <li>
-                                <a routerLink="/home/listproduct/CHA" (click)="hideMenu()"><i class="fas fa-chair pr-2"></i>Ghế Gaming</a>
-                            </li>
-                            <li>
-                                <a routerLink="/home/listproduct/KEY" (click)="hideMenu()"><i class="far fa-keyboard pr-2"></i>Bàn phím</a>
-                            </li>
-                            <li>
-                                <a routerLink="/home/listproduct/HEA" (click)="hideMenu()"><i class="fas fa-headphones-alt pr-2"></i>Tai nghe</a>
-                            </li>
-                            <li>
-                                <a routerLink="/home/listproduct/MOU" (click)="hideMenu()"><i class="fas fa-mouse-pointer pr-2"></i>Chuột</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a class="btnbar btn btn-outline-light my-2 my-sm-0" routerLink="/home">Giới thiệu</a>
-            </li>
-            <li class="nav-item">
-                <a class="btnbar btn btn-outline-light my-2 my-sm-0" routerLink="/home">Khuyến mãi</a>
-            </li>
-            <form #formSearch="ngForm" (ngSubmit)="search(formSearch)" class="formsearch form-inline my-2 my-lg-0">
-                <input name="textSearch" ngModel class="form-control mr-sm-2 searchinput" type="search"
-                    placeholder="Màn hình, tai nghe, bàn phím..." />
-                <button type="submit" class="btnsearch my-2 my-sm-0"><img
-                        src="https://img.icons8.com/wired/50/000000/search.png" /></button>
-            </form>
+  <a class="homename navbar-brand" routerLink="/home">
+    <img src="https://i.imgur.com/ekGn84w.png" alt="Null image" width="auto" height="25" />
+    <img src="https://i.imgur.com/fkW5J7J.png" alt="Null image" width="auto" height="30" />
+  </a>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <ul class="menu" (mouseleave)="hideMenu()">
+          <a routerLink="" class="btnDrop" (mouseenter)="showMenu()">Danh mục</a>
+          <li>
+            <ul class="dropForBtn">
+              <li>
+                <a routerLink="/home/listproduct/DIS" (click)="hideMenu()"><i class="fas fa-tv pr-2"></i>Màn hình</a>
+              </li>
+              <li>
+                <a routerLink="/home/listproduct/CHA" (click)="hideMenu()"><i class="fas fa-chair pr-2"></i>Ghế
+                  Gaming</a>
+              </li>
+              <li>
+                <a routerLink="/home/listproduct/KEY" (click)="hideMenu()"><i class="far fa-keyboard pr-2"></i>Bàn
+                  phím</a>
+              </li>
+              <li>
+                <a routerLink="/home/listproduct/HEA" (click)="hideMenu()"><i class="fas fa-headphones-alt pr-2"></i>Tai
+                  nghe</a>
+              </li>
+              <li>
+                <a routerLink="/home/listproduct/MOU" (click)="hideMenu()"><i
+                    class="fas fa-mouse-pointer pr-2"></i>Chuột</a>
+              </li>
+            </ul>
+          </li>
         </ul>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="btnbar btn btn-outline-light my-2 my-sm-0" routerLink="/home/cart">Giỏ hàng</a>
-            </li>
-        </ul>
-        <label class="nav-item text-white pr-3">{{nameuser}}</label>
-        <div class="nav-item">
-            <a class="btn-login btn btn-outline-light my-2 my-sm-0" (click)="loginorlogout()"
-                style="color: yellow;margin-right: 5px; ">{{btnLoginName}}</a>
-        </div>
-        <div class="nav-item">
-            <a class="btn-sign btn btn-outline-light my-2 my-sm-0" routerLink="/signup">Đăng ký</a>
-        </div>
+      </li>
+      <li class="nav-item" style="margin-left: 250px;">
+        <form #formSearch="ngForm" (ngSubmit)="search(formSearch)" class="formsearch form-inline my-2 my-lg-0">
+          <input name="textSearch" ngModel class="form-control mr-sm-2 searchinput" type="search"
+            placeholder="Màn hình, tai nghe, bàn phím..." />
+          <button type="submit" class="btnsearch my-2 my-sm-0"><img
+              src="https://img.icons8.com/wired/50/000000/search.png" /></button>
+        </form>
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="btnbar btn btn-outline-light my-2 my-sm-0" routerLink="/home/cart">Giỏ hàng</a>
+      </li>
+    </ul>
+    <label class="nav-item text-white pr-3">{{nameuser}}</label>
+    <div class="nav-item">
+      <a class="btn-login btn btn-outline-light my-2 my-sm-0" (click)="loginorlogout()"
+        style="color: yellow;margin-right: 5px; ">{{btnLoginName}}</a>
     </div>
+    <div class="nav-item">
+      <a class="btn-sign btn btn-outline-light my-2 my-sm-0" routerLink="/signup">Đăng ký</a>
+    </div>
+  </div>
 </nav>

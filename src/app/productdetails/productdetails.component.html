@@ -23,19 +23,20 @@
           <button class="btnCount bg-primary" (click)="setCount('-')"><i class="fas fa-minus"></i></button>
           <label class="label-count">
             <input type="number" #countvalue id="input-count" (keyup)="checkValue(countvalue.value)"
-              max="{{produc.count}}" min="1" value="1" />
+              max="{{produc.count}}" min="1" value="{{produc.count == 0? '0':'1'}}" />
           </label>
           <button class="btnCount bg-primary" (click)="setCount('+')"><i class="fas fa-plus"></i></button>
         </div>
         <div class="pt-4">
-          <button class="btn btn-danger" (click)="payNow(nof)">Mua</button>
-          <button class="btn btn-primary ml-5" (click)="insertCart(nof)">Thêm vào giỏ</button>
+          <button class="btn btn-danger" (click)="payNow(nof)" *ngIf="produc.count > 0">Mua</button>
+          <button class="btn btn-primary ml-5" (click)="insertCart(nof)" *ngIf="produc.count > 0">Thêm vào giỏ</button>
+          <h5 class="text-danger" *ngIf="produc.count == 0">Hết hàng</h5>
         </div>
       </div>
     </div>
     <div class="row">
       <label>Chi tiết: </label>
-      <textarea class="desc" disabled autosize>{{produc.desc}}</textarea>
+      <textarea class="desc" id="descPro" rows="10" disabled autosize>{{produc.desc}}</textarea>
     </div>
   </div>
 </div>

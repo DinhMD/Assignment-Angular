@@ -1,7 +1,8 @@
 <app-header></app-header>
 <div class="divbody">
-  <div class="contentbody">
+  <div class="contentbody" id="contentScroll" (scroll)="setScroll()">
     <router-outlet></router-outlet>
   </div>
 </div>
+  <a id="btntoTop" (click) = "goTop()"><i class="fas fa-chevron-circle-up"></i></a>
 <app-footer></app-footer>

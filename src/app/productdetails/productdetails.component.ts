@@ -3,10 +3,7 @@ import { Products } from '../dataBean';
 import { ServicesService } from "../services.service";
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { resolve } from 'dns';
-import { Observable } from 'rxjs';
 import { NgbActiveModal, NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
 @Component({
   selector: 'ngbd-modal-content',
   styles: [`
@@ -53,7 +50,7 @@ export class ProductdetailsComponent implements OnInit {
     private titleService: Title,
     private router: Router,
     private modalService: NgbModal,
-    private config: NgbModalConfig
+    private config: NgbModalConfig,
   ) {
     config.backdrop = 'static';
     config.keyboard = false;
@@ -63,14 +60,13 @@ export class ProductdetailsComponent implements OnInit {
   id;
   textType;
   ngOnInit(): void {
-    window.scrollTo(0, 0);
-    this.openVerticallyCentered(modalLoad);
     this.active.params.subscribe(param => this.setProduct(param.id));
   }
   openVerticallyCentered(content) {
     this.modalService.open(content, { size: 'sm' });
   }
   setProduct(id) {
+    this.openVerticallyCentered(modalLoad);
     this.service.getProduct().subscribe(responese => this.setProductId(responese, id));
   }
   setProductId(pro, id) {
@@ -86,6 +82,7 @@ export class ProductdetailsComponent implements OnInit {
     }
     this.titleService.setTitle("Gear Shop - " + this.produc.name);
     this.productType = pro.filter(item => item.type == this.produc.type && item.id != id);
+    window.scrollTo(0, 0);
     this.modalService.dismissAll();
   }
   checkValue(index) {

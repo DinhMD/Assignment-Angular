@@ -5,6 +5,76 @@ import { registerLocaleData } from "@angular/common";
 import localeFr from "@angular/common/locales/fr";
 import { ActivatedRoute,Router, NavigationEnd } from "@angular/router";
 import { Route } from '@angular/compiler/src/core';
+import { NgbActiveModal, NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+@Component({
+  selector: 'ngbd-modal-content',
+  styles: [`
+    .dark-modal .modal-content {
+      background-color: rgba(#292b2c, 0);
+    }
+  `],
+  template: `
+  <button class="btn btn-primary w-100">
+      <span class="spinner-border spinner-border-sm"></span>
+      Đang cập nhật dữ liệu..
+  </button>
+  `
+})
+export class modalUpdatePro {
+  constructor(
+    public activeModal: NgbActiveModal,
+    private config: NgbModalConfig
+  ) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
+}
+@Component({
+  selector: 'ngbd-modal-content',
+  styles: [`
+    .dark-modal .modal-content {
+      background-color: rgba(#292b2c, 0);
+    }
+  `],
+  template: `
+  <button class="btn btn-warning w-100">
+      <span class="spinner-border spinner-border-sm"></span>
+      Vui lòng đợi lấy dữ liệu..
+  </button>
+  `
+})
+export class modalLoadPro {
+  constructor(
+    public activeModal: NgbActiveModal,
+    private config: NgbModalConfig
+  ) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
+}
+@Component({
+  selector: 'ngbd-modal-content',
+  styles: [`
+    .dark-modal .modal-content {
+      background-color: rgba(#292b2c, 0);
+    }
+  `],
+  template: `
+  <button class="btn btn-danger w-100">
+      <span class="spinner-border spinner-border-sm"></span>
+      Đang xóa..
+  </button>
+  `
+})
+export class modalDelPro {
+  constructor(
+    public activeModal: NgbActiveModal,
+    private config: NgbModalConfig
+  ) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
+}
 @Component({
   selector: "app-manager-product",
   templateUrl: "./manager-product.component.html",
@@ -15,22 +85,25 @@ export class ManagerProductComponent implements OnInit {
   constructor(
     private service: ServicesService,
     private activate: ActivatedRoute,
+    private modalService: NgbModal,
     private router: Router
   ) {}
   items: Products[];
   mySubscription: any;
   ngOnInit(): void {
-    this.service
-      .getProduct()
-      .subscribe(
-        response => this.pullItem(response),
-        error => console.log(error)
-      );
+    this.callData();
   }
-  ngOnDestroy() {
-    if (this.mySubscription) {
-      this.mySubscription.unsubscribe();
-    }
+  callData(){
+    this.openVerticallyCentered(modalLoadPro);
+    this.service
+    .getProduct()
+    .subscribe(
+      response => this.pullItem(response),
+      error => console.log(error)
+    );
+  }
+  openVerticallyCentered(content) {
+    this.modalService.open(content, { size: 'sm' });
   }
   pullItem(list) {
     this.litsItem = list;
@@ -46,6 +119,7 @@ export class ManagerProductComponent implements OnInit {
             items => items.type === param.type
           ))
     );
+    this.modalService.dismissAll();
   }
   showfullItem() {
     this.items = this.litsItem;
@@ -113,7 +187,8 @@ export class ManagerProductComponent implements OnInit {
     this.itemDel = item;
   }
   delete(pro){
-    this.service.deleteProduct(pro.id).subscribe(data => window.location.reload());
+    this.openVerticallyCentered(modalDelPro);
+    this.service.deleteProduct(pro.id).subscribe(data => this.callData());
   }
   productForm: Products;
   ////////////////////////
@@ -126,7 +201,7 @@ export class ManagerProductComponent implements OnInit {
   setPicture(url) {
     this.picturelink = url;
   }
-  saveData() {
+  checkData(){
     let name = (document.querySelector("#name2") as HTMLInputElement);
     let price = (document.querySelector("#price2") as HTMLInputElement);
     let image = (document.querySelector("#picture2") as HTMLInputElement);
@@ -135,17 +210,7 @@ export class ManagerProductComponent implements OnInit {
     let count = (document.querySelector("#count2") as HTMLInputElement);
     let sale = (document.querySelector("#sale2") as HTMLInputElement);
     let desc = (document.querySelector("#desc2") as HTMLTextAreaElement);
-    var check: Boolean;
-    check = true;
-    if (id.value == "") {
-      check = false;
-      id.style.border = "solid 1px red";
-      id.style.boxShadow = "0px 0px 5px red";
-    } else {
-      id.style.border = "solid 1px lightgray";
-      id.style.borderBottom = "solid 3px green";
-      id.style.boxShadow = "0px 0px 0px red";
-    }
+    let check = true;
     if (name.value == "") {
       check = false;
       name.style.border = "solid 1px red";
@@ -155,10 +220,14 @@ export class ManagerProductComponent implements OnInit {
       name.style.borderBottom = "solid 3px green";
       name.style.boxShadow = "0px 0px 0px red";
     }
-    if (price.value == "0" || price.value == "") {
+    if (price.value == "0" || price.value == "" || parseInt(price.value) < 0) {
       check = false;
       price.style.border = "solid 1px red";
       price.style.boxShadow = "0px 0px 5px red";
+    } else {
+      price.style.border = "solid 1px lightgray";
+      price.style.borderBottom = "solid 3px green";
+      price.style.boxShadow = "0px 0px 0px red";
     }
     if (image.value == "") {
       check = false;
@@ -169,7 +238,38 @@ export class ManagerProductComponent implements OnInit {
       image.style.borderBottom = "solid 3px green";
       image.style.boxShadow = "0px 0px 0px red";
     }
+    if (type.value == "") {
+      check = false;
+      type.style.border = "solid 1px red";
+      type.style.boxShadow = "0px 0px 5px red";
+    } else {
+      type.style.border = "solid 1px lightgray";
+      type.style.borderBottom = "solid 3px green";
+      type.style.boxShadow = "0px 0px 0px red";
+    }
+    if (count.value == "" || parseInt(count.value) < 0) {
+      count.value = "0";
+    }
+    if (sale.value == "" || parseInt(sale.value) < 0) {
+      sale.value = "0";
+    }
     if (check) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  saveData() {
+    let name = (document.querySelector("#name2") as HTMLInputElement);
+    let price = (document.querySelector("#price2") as HTMLInputElement);
+    let image = (document.querySelector("#picture2") as HTMLInputElement);
+    let id = (document.querySelector("#id2") as HTMLInputElement);
+    let type = (document.querySelector("#type2") as HTMLSelectElement);
+    let count = (document.querySelector("#count2") as HTMLInputElement);
+    let sale = (document.querySelector("#sale2") as HTMLInputElement);
+    let desc = (document.querySelector("#desc2") as HTMLTextAreaElement);
+    var check: Boolean;
+    if (this.checkData()) {
       let pro = {
         id: parseInt(id.value),
         type: type.value,
@@ -180,6 +280,7 @@ export class ManagerProductComponent implements OnInit {
         image: image.value,
         desc: desc.value
       }
+      this.openVerticallyCentered(modalUpdatePro);
       this.titleP ="Lưu thành công";
       this.updateProduct(pro);
       this.setNUll();
@@ -209,9 +310,6 @@ export class ManagerProductComponent implements OnInit {
   }
   closeForm() {
     this.titleP = "Thông tin sản phẩm";
-    this.router.navigateByUrl('/manager', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/manager/product/all']);
-  }); 
   }
   updatedata(pro) {
     return new Promise (resolve => {
@@ -220,14 +318,6 @@ export class ManagerProductComponent implements OnInit {
   }
  async updateProduct(pro) {
     await this.updatedata(pro);
-    this.router.routeReuseStrategy.shouldReuseRoute = function () {
-      return false;
-    };
-    
-    this.mySubscription = this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.router.navigated = false;
-      }
-    });
+    this.callData();
   }
 }

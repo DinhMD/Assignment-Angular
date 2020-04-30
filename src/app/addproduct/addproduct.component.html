@@ -1,44 +1,51 @@
-<div class="modal-dialog modal-lg">
-    <div class="modal-content">
-        <form #formadd="ngForm" (ngSubmit)="saveData()">
-            <div class="modal-header">
-                <h4 class="modal-title text-center" style="width: 100%;">{{save}}</h4>
-            </div>
-            <div class="modal-body row">
-                <div class="col-6">
-                    <label>ID <span class="notf">{{idwarning}}</span>
-                        <input type="text" id="id" #id (keyup)="findID(id.value)" class="input-form form-control"
-                            placeholder=" Mã sản phẩm (ID).." required>
-                    </label>
-                    <label>Loại <select class="input-form" id="type">
-                            <option value="">--Chọn loại--</option>
-                            <option value="DIS">Màn hình</option>
-                            <option value="CHA">Ghế</option>
-                            <option value="KEY">Bàn phím</option>
-                            <option value="HEA">Tai nghe</option>
-                            <option value="MOU">Chuột</option>
-                        </select></label>
-                    <label>Ảnh sản phẩm <span class="notf">{{picwarning}}</span><input id="picture" type="text" #picture (keyup)="setPicture(picture.value)"
-                            class="input-form" placeholder=" Ảnh sản phẩm..(url)">
-                    </label>
-                    <img src="{{picturelink}}" alt="" width="300">
-                </div>
-                <div class="col-6">
-                    <label>Tên <span class="notf">{{namewarning}}</span><input id="name" type="text" class="input-form" placeholder=" Tên sản phẩm.."></label>
-                    <label>Số lượng <input id="count" type="number" class="input-form" placeholder=" Số lượng"></label>
-                    <label>Giá (VND) <span class="notf">{{pricewarning}}</span>
-                        <input id="price" min="0" type="number" class="input-form"
-                            placeholder=" Giá..(VND)"></label>
-                    <label>Giảm giá (%)<input id="sale" type="number" class="input-form" min="0" max="100"
-                            placeholder=" Giảm giá..(%)"></label>
-                    <label>Chi tiết<textarea id="desc" class="input-form" rows="10"
-                            placeholder=" Mô tả chi tiết.."></textarea></label>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="sudmit" class="btn btn-success">Lưu</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="closeForm()">Đóng</button>
-            </div>
-        </form>
-    </div>
-</div>
+<!-- <div class="modal-dialog modal-lg"> -->
+  <!-- <div class="modal-content"> -->
+    <div class="formAddpro">
+    <form #formadd="ngForm" (ngSubmit)="saveData()">
+      <div class="modal-header">
+        <div class="modal-title w-100">
+          <h4 class="text-center text-light d-block" style="width: 100%;">{{save}}</h4>
+          <p class="d-block text-center text-light w-100">{{nof}}</p>
+        </div>
+      </div>
+      <div class="modal-body row">
+        <div class="col-6">
+          <label class="text-light">ID <span class="text-warning">{{idNof}}</span>
+            <input type="text" id="id" #id (keyup)="findID(id.value)" class="input-form form-control"
+              placeholder=" Mã sản phẩm (ID).." required>
+          </label>
+          <label class="text-light">Loại <span class="notf ml-3">{{typewarning}}</span>
+            <select class="input-form" id="type" (change)="checkData()">
+              <option value="">--Chọn loại--</option>
+              <option value="DIS">Màn hình</option>
+              <option value="CHA">Ghế</option>
+              <option value="KEY">Bàn phím</option>
+              <option value="HEA">Tai nghe</option>
+              <option value="MOU">Chuột</option>
+            </select></label>
+          <label class="text-light">Ảnh sản phẩm <span class="notf ml-3">{{picwarning}}</span><input id="picture" type="text" #picture
+              (keyup)="setPicture(picture.value)" (keyup) = "checkData()" class="input-form" placeholder=" Ảnh sản phẩm..(url)">
+          </label>
+          <img src="{{picturelink}}" alt="" width="300">
+        </div>
+        <div class="col-6">
+          <label class="text-light">Tên <span class="notf ml-3">{{namewarning}}</span><input id="name" type="text" class="input-form"  (keyup) = "checkData()"
+              placeholder=" Tên sản phẩm.."></label>
+          <label class="text-light">Số lượng <input id="count" type="number" class="input-form" placeholder=" Số lượng"></label>
+          <label class="text-light">Giá (VND)<span class="notf ml-3">{{pricewarning}}</span>
+            <input id="price"  (keyup) = "checkData()" min="0" type="number" class="input-form"
+              placeholder=" Giá..(VND)"></label>
+          <label class="text-light">Giảm giá (%)<input id="sale" type="number" class="input-form" min="0" max="100"
+              placeholder=" Giảm giá..(%)"></label>
+          <label class="text-light">Chi tiết<textarea id="desc" class="input-form" rows="10"
+              placeholder=" Mô tả chi tiết.."></textarea></label>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-danger px-4" data-dismiss="modal" (click)="closeForm()">Đóng</button>
+        <button type="sudmit" class="btn btn-success px-5">Lưu</button>
+      </div>
+    </form>
+  </div>
+  <!-- </div> -->
+<!-- </div> -->

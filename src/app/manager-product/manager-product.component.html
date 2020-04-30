@@ -2,10 +2,11 @@
   <h1 class="ml-2">Quản lý sản phẩm</h1>
   <div class="row w-100 ml-1 justify-content-between">
     <!-- data-toggle="modal" data-target="#myModaladd" -->
-    <button class="btn btn-outline-danger" routerLink="/manager/add"><i
-        class="far fa-plus-square pr-2"></i>Thêm sản phẩm</button>
+    <button class="btn btn-outline-danger" routerLink="/manager/add"><i class="far fa-plus-square pr-2"></i>Thêm sản
+      phẩm</button>
     <div class="col-4 justify-content-end">
-      <input class="h-100 col-9" id="textS" #textsearch type="text" (keyup)="searchPro(textsearch.value, typeSearch.value)" placeholder=" Tìm kiếm..">
+      <input class="h-100 col-9" id="textS" #textsearch type="text"
+        (keyup)="searchPro(textsearch.value, typeSearch.value)" placeholder=" Tìm kiếm..">
       <select #typeSearch class="h-100 col-3" id="selectS" (change)="setDefaultSearch()">
         <option value="id">ID</option>
         <option value="name">Tên</option>
@@ -42,14 +43,16 @@
         <td>{{item.count}}</td>
         <td hidden>{{item.type}}</td>
         <td><a data-toggle="modal" data-target="#myModaldetail" (click)="setProductDetail(item)">Chi tiết</a></td>
-        <td><a data-toggle="modal" data-target="#exampleModal"  (click)="setDeleteId(item)" ><i class="fas fa-trash-alt"></i></a></td>
+        <td><a data-toggle="modal" data-target="#exampleModal" (click)="setDeleteId(item)"><i
+              class="fas fa-trash-alt"></i></a></td>
       </tr>
     </tbody>
   </table>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="itemDel">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true" *ngIf="itemDel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -61,11 +64,10 @@
       <div class="modal-body">
         <p><strong>ID:</strong> {{itemDel.id}}</p>
         <p><strong>Sản phẩm:</strong> {{itemDel.name}}</p>
-        
       </div>
       <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="delete(itemDel)">Có</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal">Không</button>
+        <button type="button" class="btn btn-danger px-5" data-dismiss="modal" (click)="delete(itemDel)">Có</button>
       </div>
     </div>
   </div>
@@ -73,50 +75,53 @@
 <!-------end Modal------>
 <app-addproduct class="modal fade" id="myModaladd" role="dialog"></app-addproduct>
 <div class="modal fade" id="myModaldetail" role="dialog">
-<div class="modal-dialog modal-lg">
-  <div class="modal-content">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
       <form #form="ngForm" (ngSubmit)="saveData()" *ngIf="product">
-          <div class="modal-header">
-              <h4 class="modal-title text-center" style="width: 100%;">{{titleP}}</h4>
-          </div>
-          <div class="modal-body row">
-              <div class="col-6">
-                  <label>ID <span class="notf">{{idwarning}}</span>
-                      <input type="text" id="id2" name="id" value="{{product.id}}" #id class="input-form form-control"
-                          placeholder=" Mã sản phẩm (ID).." disabled>
-                  </label>
+        <div class="modal-header">
+          <h4 class="modal-title text-center" style="width: 100%;">{{titleP}}</h4>
+        </div>
+        <div class="modal-body row">
+          <div class="col-6">
+            <label>ID <span class="notf">{{idwarning}}</span>
+              <input type="text" id="id2" name="id" (keyup)="checkData()" value="{{product.id}}" #id
+                class="input-form form-control" placeholder=" Mã sản phẩm (ID).." disabled>
+            </label>
 
-                  <label>Loại <select class="input-form" name="type" value="{{product.type}}" id="type2">
-                          <option value="">--Chọn loại--</option>
-                          <option value="DIS">Màn hình</option>
-                          <option value="CHA">Ghế</option>
-                          <option value="KEY">Bàn phím</option>
-                          <option value="HEA">Tai nghe</option>
-                          <option value="MOU">Chuột</option>
-                      </select></label>
-                  <label>Ảnh sản phẩm <span class="notf">{{picwarning}}</span><input id="picture2" name="picture" type="text" #picture2 value="{{product.image}}" (keyup)="setPicture(picture2.value)"
-                          class="input-form" placeholder=" Ảnh sản phẩm..(url)">
-                  </label>
-                  <img src="{{picture2.value}}" alt="" width="300">
-              </div>
-              <div class="col-6">
-                  <label>Tên <span class="notf">{{namewarning}}</span><input id="name2" name="name2" type="text" value="{{product.name}}" class="input-form" placeholder=" Tên sản phẩm.."></label>
-                  <label>Số lượng <input id="count2" name="count" type="number" value="{{product.count}}"  class="input-form" placeholder=" Số lượng"></label>
-                  <label>Giá (VND) <span class="notf">{{pricewarning}}</span>
-                      <input id="price2" min="0"  value="{{product.price}}" name="price" type="number" class="input-form"
-                          placeholder=" Giá..(VND)"></label>
-                  <label>Giảm giá (%)<input id="sale2" name="sale"  type="number" value="{{product.sale}}" class="input-form" min="0" max="100"
-                          placeholder=" Giảm giá..(%)"></label>
-                  <label>Chi tiết<textarea id="desc2" value="{{product.desc}}" name="desc" class="input-form" rows="10"
-                          placeholder=" Mô tả chi tiết.."></textarea></label>
-              </div>
+            <label>Loại <select class="input-form" (change)="checkData()" name="type" value="{{product.type}}"
+                id="type2">
+                <option value="">--Chọn loại--</option>
+                <option value="DIS">Màn hình</option>
+                <option value="CHA">Ghế</option>
+                <option value="KEY">Bàn phím</option>
+                <option value="HEA">Tai nghe</option>
+                <option value="MOU">Chuột</option>
+              </select></label>
+            <label>Ảnh sản phẩm <span class="notf">{{picwarning}}</span><input id="picture2" name="picture"
+                (keyup)="checkData()" type="text" #picture2 value="{{product.image}}"
+                (keyup)="setPicture(picture2.value)" class="input-form" placeholder=" Ảnh sản phẩm..(url)">
+            </label>
+            <img src="{{picture2.value}}" alt="" width="300">
           </div>
-          <div class="modal-footer">
-              <button type="sudmit" class="btn btn-success">Lưu</button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="closeForm()">Đóng</button>
+          <div class="col-6">
+            <label>Tên<input id="name2" (keyup)="checkData()" name="name2" type="text" value="{{product.name}}"
+                class="input-form" placeholder=" Tên sản phẩm.."></label>
+            <label>Số lượng <input id="count2" name="count" type="number" value="{{product.count}}" class="input-form"
+                placeholder=" Số lượng"></label>
+            <label>Giá (VND)
+              <input id="price2" min="0" (keyup)="checkData()" value="{{product.price}}" name="price" type="number"
+                class="input-form" placeholder=" Giá..(VND)"></label>
+            <label>Giảm giá (%)<input id="sale2" name="sale" type="number" value="{{product.sale}}" class="input-form"
+                min="0" max="100" placeholder=" Giảm giá..(%)"></label>
+            <label>Chi tiết<textarea id="desc2" value="{{product.desc}}" name="desc" class="input-form" rows="10"
+                placeholder=" Mô tả chi tiết.."></textarea></label>
           </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-danger px-4" data-dismiss="modal" (click)="closeForm()">Đóng</button>
+          <button type="sudmit" class="btn btn-success px-5">Lưu</button>
+        </div>
       </form>
+    </div>
   </div>
 </div>
-</div>
-

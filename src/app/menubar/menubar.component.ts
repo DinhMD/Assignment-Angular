@@ -19,6 +19,11 @@ export class MenubarComponent implements OnInit {
   ngOnInit(): void {
     this.btnLoginName = this.service.getInforLogin().btn;
     this.nameuser = this.service.getInforLogin().name;
+    if (this.service.getInforLogin().id != 0) {
+      (document.querySelector(".btn-sign") as HTMLElement).style.display = "none";
+    } else {
+      (document.querySelector(".btn-sign") as HTMLElement).style.display = "block";
+    }
     (document.querySelector(".dropForBtn") as HTMLElement).style.opacity = "0";
     (document.querySelector(".dropForBtn") as HTMLElement).style.visibility =
       "hidden";
@@ -47,6 +52,7 @@ export class MenubarComponent implements OnInit {
       this.router.navigateByUrl("/login");
     } else {
       this.service.updateCustomer({login: false});
+      (document.querySelector(".btn-sign") as HTMLElement).style.display = "block";
       this.btnLoginName = "Đăng nhập";
       this.nameuser = "";
       this.cartzise = 0;

@@ -7,6 +7,10 @@
     </div>
     <input type="text col-6" #search (keyup)="searchName(search.value)" placeholder=" Tìm kiếm sản phẩm..">
   </div>
+  <div class="row w-100 justify-content-start">
+    <ngb-pagination [collectionSize]="maxpage" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"
+      (pageChange)="showPage()"></ngb-pagination>
+  </div>
   <div class="row">
     <div class="row justify-content-left w-100">
       <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 card" *ngFor="let item of listPage">
@@ -30,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div class="row w-100 justify-content-center">
+    <div class="row ml-2 w-100 justify-content-start">
       <ngb-pagination [collectionSize]="maxpage" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"
         (pageChange)="showPage()"></ngb-pagination>
     </div>

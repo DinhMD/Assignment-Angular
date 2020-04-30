@@ -102,13 +102,13 @@ export class CartComponent implements OnInit {
     if (this.service.getInforLogin().id == 0) {
       this.router.navigateByUrl("/login");
     } else {
-      this.openVerticallyCentered(NgbdModalContent);
       this.title.setTitle("Giỏ hàng");
       this.calldata();
     }
 
   }
   calldata() {
+    this.openVerticallyCentered(NgbdModalContent);
     this.service.getCart().subscribe(responese => this.setData(responese));
   }
   setData(item) {
@@ -125,8 +125,12 @@ export class CartComponent implements OnInit {
   openVerticallyCentered(content) {
     this.modalService.open(content, { centered: false, size: 'sm' });
   }
+  openVerticallyCenter(content) {
+    this.modalService.open(content, { centered: true, size: 'sm' });
+  }
   dimissModal(){
     this.modalService.dismissAll();
+    this.calldata();
   }
   show(item) {
     this.itemDel = item;
@@ -210,12 +214,11 @@ export class CartComponent implements OnInit {
         await this.activeCart({ id: this.pay[index].id, status: true });
         console.log(item.id);
         var product = await this.getproduct(item.id);
-        console.log(await this.updateProduct(item, product));
-        setTimeout(() => {
-          this.openVerticallyCentered(content);
-        },1000);
+        await this.updateProduct(item, product);
+        // setTimeout(() => {
+          this.openVerticallyCenter(content);
+        // },1000);
       }
-      this.calldata();
       this.pay = [];
       this.sum = 0;
     }
