@@ -199,8 +199,6 @@ export class CartComponent implements OnInit {
         image: pro.image,
         desc: pro.desc
       }
-      console.log(pro);
-      console.log(pro.count - item.count + "--" + pro.count + "--" + item.count);
       this.service.updateProduct(newCount).subscribe(data => resolve(data));
     })
   }
