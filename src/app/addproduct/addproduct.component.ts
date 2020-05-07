@@ -145,7 +145,7 @@ export class AddproductComponent implements OnInit {
     let desc = (document.querySelector("#desc") as HTMLTextAreaElement);
     var check: Boolean;
     check = true;
-    if (name.value == "") {
+    if (name.value.trim() == "") {
       check = false;
       this.namewarning = 'Tên không được để trống!'
       name.style.border = "solid 2px red";
