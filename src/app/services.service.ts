@@ -7,7 +7,6 @@ import { Observable } from "rxjs";
 })
 export class ServicesService {
   api = "https://5e7eae447a92ed001655fc7c.mockapi.io";
-  logapi = "https://5e7b1a7f0e04630016332aa5.mockapi.io/checklogin";
   fullitems: Products[];
   fullOrder: Order[];
   fullEmploy: Employ[];
