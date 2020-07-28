@@ -1,4 +1,3 @@
-import { products } from '../../../dinhmdph07327-pt14302-angular/src/app/dataimp';
 export class Products {
     id: number;
     type: String;

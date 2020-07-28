@@ -1,0 +1,57 @@
+<div class="bglogin">
+    <div class="container">
+        <!---Begin Modal-->
+        <ng-template #nofRepass let-modal>
+        <button class="btn btn-primary w-100">
+          <span class="spinner-border spinner-border-sm"></span>
+          Wait for update your account..
+        </button>
+        </ng-template>
+        <!---End Modal--->
+      <div class="d-flex justify-content-center h-100">
+        <div class="card">
+          <div class="card-header">
+            <h3>Forgot Password</h3>
+            <span class="text-white">Hello <u>{{customerName}}</u></span><br>
+          </div>
+          <div class="card-body">
+            <span class="text-white">Change your password</span>
+            <form class="pt-1" #formRepass="ngForm" (ngSubmit)="callData(formRepass, nofRepass)">
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input name="password" #password="ngModel" ngModel minlength="8" class="form-control"
+                  placeholder="Create password" type="password" required>
+              </div>
+              <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                <div *ngIf="password.errors.required">
+                  Mật khẩu không được để trống
+                </div>
+                <div *ngIf="password.errors.minlength">
+                  Mật khẩu quá ngắn (ít nhất 8 ký tự)
+                </div>
+              </div>
+              <!-- form-group// -->
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input name="repass" #repass="ngModel" ngModel required (keyup)="checkPass(password.value, repass.value)" class="form-control" placeholder="Repeat password"
+                  type="password">
+              </div>
+              <div *ngIf="checkp == false" class="alert alert-danger">
+                <div >
+                  Mật khẩu không khớp
+                </div>
+              </div>
+              <div class="btngroup form-group">
+                            <a class="btn float-left login_btn" routerLink="/home">Home</a>
+                            <input type="submit" value="Accept" class="btn float-right login_btn">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>

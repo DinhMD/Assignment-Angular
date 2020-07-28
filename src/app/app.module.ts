@@ -30,33 +30,49 @@ import { ManagerProductDetailComponent } from './manager-product-detail/manager-
 import { ProductTypeComponent } from './product-type/product-type.component';
 import { SearchComponent } from './search/search.component';
 import { CartComponent } from './cart/cart.component';
+import { ForgotpassComponent } from './forgotpass/forgotpass.component';
+import { RepassComponent } from './repass/repass.component';
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    MenubarComponent,
-    SlidebannerComponent,
-    ProductlistComponent,
-    ProductmanagerComponent,
-    AddproductComponent,
-    FooterComponent,
-    LoginComponent,
-    SignComponent,
-    MainComponent,
-    ErropageComponent,
-    ManagerProductComponent,
-    ManagerEmployComponent,
-    ManagerCustomerComponent,
-    ManagerOderComponent,
-    ProductdetailsComponent,
-    ContentsComponent,
-    ManagerProductDetailComponent,
-    ProductTypeComponent,
-    SearchComponent,
-    CartComponent
-  ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgbModule, TextareaAutosizeModule],
-  providers: [ServicesService, Title],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      HeaderComponent,
+      MenubarComponent,
+      SlidebannerComponent,
+      ProductlistComponent,
+      ProductmanagerComponent,
+      AddproductComponent,
+      FooterComponent,
+      LoginComponent,
+      SignComponent,
+      MainComponent,
+      ErropageComponent,
+      ManagerProductComponent,
+      ManagerEmployComponent,
+      ManagerCustomerComponent,
+      ManagerOderComponent,
+      ProductdetailsComponent,
+      ContentsComponent,
+      ManagerProductDetailComponent,
+      ProductTypeComponent,
+      SearchComponent,
+      CartComponent,
+      ForgotpassComponent,
+      RepassComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      HttpClientModule,
+      FormsModule,
+      NgbModule,
+      TextareaAutosizeModule
+   ],
+   providers: [
+      ServicesService,
+      Title
+   ],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }

@@ -13,7 +13,14 @@ export class ServicesService {
   fullCustomer: Customer[];
   appTitle = "Gear Shop - Gaming Gear Center";
   login: boolean = false;
+  sampleId;
   constructor(private http: HttpClient) { }
+  setSampleId(id) {
+    this.sampleId = id;
+  }
+  getSampleId(){
+    return this.sampleId;
+  }
   getProduct(): Observable<Products[]> {
     return this.http.get<Products[]>(`${this.api}/products`);
   }
@@ -52,6 +59,12 @@ export class ServicesService {
   }
   updateCustomer(customer): Observable<Customer> {
     return this.http.put<Customer>(`${this.api}/customer/${this.logId}`, customer);
+  }
+  updateCustomerByID(customer): Observable<Customer> {
+    return this.http.put<Customer>(`${this.api}/customer/${customer.id}`, customer);
+  }
+  getCustomerByID(id): Observable<Customer> {
+    return this.http.get<Customer>(`${this.api}/customer/${id}`);
   }
   getCustomerID(): Observable<Customer> {
     return this.http.get<Customer>(`${this.api}/customer/${this.logId}`);

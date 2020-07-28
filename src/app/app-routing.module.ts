@@ -15,8 +15,12 @@ import { ProductTypeComponent } from './product-type/product-type.component';
 import { SearchComponent } from './search/search.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { CartComponent } from './cart/cart.component';
+import { ForgotpassComponent } from './forgotpass/forgotpass.component';
+import { RepassComponent } from './repass/repass.component';
 const routes: Routes = [
   { path: "login", component: LoginComponent },
+  { path:"forgot", component: ForgotpassComponent},
+  { path:"repass", component: RepassComponent},
   {
     path: "home",
     component: MainComponent,
